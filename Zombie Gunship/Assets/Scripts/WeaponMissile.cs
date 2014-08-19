@@ -55,7 +55,7 @@ public class WeaponMissile : MonoBehaviour {
 
     private void SpawnMissiles() {
         // Create a new Missile
-        GameObject objMissile = (GameObject)Instantiate (Missile, spawnPoint.position, spawnPoint.rotation);
+        GameObject objMissile = (GameObject)Instantiate (missile, spawnPoint.position, spawnPoint.rotation);
         objMissile.GetComponent<Missile> ().Initialise (hasTarget, target);
     }
 

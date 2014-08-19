@@ -7,9 +7,9 @@ public class Missile : MonoBehaviour {
     public float speed = 20.0f;
     private Transform target;
 
-    public void Initialise(bool hasTarget, Transform target = null1) {
+    public void Initialise(bool hasTarget, Transform target = null) {
         if (hasTarget) {
-            this.tag = target;
+            this.target = target;
             Destroy (gameObject, 4.0f);
         } else {
             Destroy(gameObject, 2.0f);
