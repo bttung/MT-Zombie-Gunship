@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Canon.cs" />
      <Compile Include="Assets\Scripts\ChaseState.cs" />
      <Compile Include="Assets\Scripts\DeadState.cs" />
+     <Compile Include="Assets\Scripts\FSM.cs" />
      <Compile Include="Assets\Scripts\Human.cs" />
      <Compile Include="Assets\Scripts\LivingCreature.cs" />
      <Compile Include="Assets\Scripts\Missile.cs" />

@@ -64,5 +64,24 @@ public class PlaneController : MonoBehaviour {
             Quaternion targetRotation = Quaternion.LookRotation(rayHitPoint - transform.position);
             weapon.transform.rotation = Quaternion.Slerp(weapon.transform.rotation, targetRotation, Time.deltaTime * weaponRotSpeed);
         }
+
+        if (Input.GetKey (KeyCode.W)) {
+            targetSpeed = maxForwardSpeed;
+        } else if (Input.GetKey (KeyCode.S)) {
+            targetSpeed = maxBackwardSpeed;
+        } else {
+            targetSpeed = 0;
+        }
+
+        if (Input.GetKey (KeyCode.A)) {
+            transform.Rotate (0, -rotSpeed * Time.deltaTime, 0.0f);
+        } else if (Input.GetKey (KeyCode.D)) {
+            transform.Rotate (0, rotSpeed * Time.deltaTime, 0.0f);
+        }
+
+        // Determine current speed
+        curSpeed = Mathf.Lerp (curSpeed, targetSpeed, 7.0f * Time.deltaTime);
+
+        transform.Translate (Vector3.forward * Time.deltaTime * curSpeed);
     }
 }
