@@ -61,7 +61,7 @@ public class ZombieController : MonoBehaviour {
     
     // Taking Damage when Hit with Missile or Bullet.
     void OnCollisionEnter(Collision collision) {
-        if (fsm.CurrentState == ZombieFSMStateID.Dead) {
+        if (fsm.CurrentStateID == ZombieFSMStateID.Dead) {
             if (!isExploding) {
                 isExploding = true;
                 Explode();
