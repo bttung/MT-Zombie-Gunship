@@ -6,6 +6,10 @@ public class ZombieAttackState : ZombieFSMState {
     protected Transform bulletSpawnPoint;
     private WeaponGun bullet;
 
+    public ZombieAttackState() {
+        stateID = ZombieFSMStateID.Atakking;
+    }
+
     public override void Reason(GameObject human, GameObject npc) {
 
         // Check the distance with human, When distance is near, transition to the chase state
@@ -32,7 +36,8 @@ public class ZombieAttackState : ZombieFSMState {
     }
 
     public override void Act(GameObject human, GameObject npc) {
-        // Shooting Coroutine
+        // Attack Human
+        npc.GetComponent<ZombieController> ().Attack ();
     }
 
 }

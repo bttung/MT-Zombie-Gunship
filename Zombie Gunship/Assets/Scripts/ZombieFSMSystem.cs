@@ -13,6 +13,10 @@ public class ZombieFSMSystem {
     private ZombieFSMState currentState;
     public ZombieFSMState CurrentState {get {return currentState;}}
 
+    public ZombieFSMSystem() {
+        states = new List<ZombieFSMState> ();
+    }
+
     public void AddState(ZombieFSMState state) {
         // Check for Null Reference before Adding
         if (state == null) {
@@ -73,7 +77,9 @@ public class ZombieFSMSystem {
         currentStateID = id;
         foreach (ZombieFSMState state in states) {
             if (state.ID == currentStateID) {
+                // Do the post processing of the state before setting the new one
                 currentState = state;
+                // Reset the state to its desirec condition before it can reason or act
                 break;
             }
         }

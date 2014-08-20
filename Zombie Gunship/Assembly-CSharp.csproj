@@ -46,16 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Bullet.cs" />
-     <Compile Include="Assets\Scripts\Human.cs" />
-     <Compile Include="Assets\Scripts\Living.cs" />
-     <Compile Include="Assets\Scripts\Missile.cs" />
+     <Compile Include="Assets\Scripts\BulletController.cs" />
+     <Compile Include="Assets\Scripts\HumanController.cs" />
+     <Compile Include="Assets\Scripts\MissileController.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
-     <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
      <Compile Include="Assets\Scripts\WeaponGun.cs" />
      <Compile Include="Assets\Scripts\WeaponMissile.cs" />
-     <Compile Include="Assets\Scripts\Zombie.cs" />
      <Compile Include="Assets\Scripts\ZombieAttackState.cs" />
      <Compile Include="Assets\Scripts\ZombieChaseState.cs" />
      <Compile Include="Assets\Scripts\ZombieController.cs" />
@@ -65,6 +62,7 @@
      <Compile Include="Assets\Scripts\ZombiePatrolState.cs" />
      <None Include="Assets\Scripts\bak\FSM.txt" />
      <None Include="Assets\Scripts\bak\SimpleFSM.txt" />
+     <None Include="Assets\Scripts\bak\Living.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">

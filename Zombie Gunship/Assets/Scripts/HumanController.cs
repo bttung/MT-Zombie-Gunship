@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Zombie : Living {
+public class HumanController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,4 +12,8 @@ public class Zombie : Living {
 	void Update () {
 	
 	}
+
+    public void TakeDamage(int damage) {
+
+    }
 }

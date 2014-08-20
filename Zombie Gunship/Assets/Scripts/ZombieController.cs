@@ -6,10 +6,14 @@ using System.Text;
 [RequireComponent(typeof(Rigidbody))]
 public class ZombieController : MonoBehaviour {
 
-    public GameObject player;
+    public GameObject human;
     public Transform[] path;
     private ZombieFSMSystem fsm;
-    private bool isExploding = false;
+
+    //    // Bullet
+    //    public GameObject bullet;
+    //    protected float shootRate;
+    //    protected float elapsedTime;
 
     public void SetTransition(ZombieTransition trans) {fsm.PerformTransition(trans);}
 
@@ -18,8 +22,8 @@ public class ZombieController : MonoBehaviour {
     }
 
     public void FixedUpdate() {
-        fsm.CurrentState.Reason (player, gameObject);
-        fsm.CurrentState.Act (player, gameObject);
+        fsm.CurrentState.Reason (human, gameObject);
+        fsm.CurrentState.Act (human, gameObject);
     }
 
     // The NPC has 4 states: Patrol, Chasing, Attack, Dead
@@ -48,7 +52,7 @@ public class ZombieController : MonoBehaviour {
         fsm.AddState (dead);
     }
 
-    protected void Explode() {
+    public void Explode() {
         float rndX = Random.Range (10.0f, 30.0f);
         float rndZ = Random.Range (10.0f, 30.0f);
         for (int i = 0; i < 3; i++) {
@@ -58,16 +62,22 @@ public class ZombieController : MonoBehaviour {
         
         Destroy (gameObject, 1.5f);
     }
+
+    public void Attack() {
+        // Check if human died
+        if (human == null) {
+            return;
+        }
+
+        // Attack Human
+        // Start the Attack Coroutine ...
+        human.GetComponent<HumanController> ().TakeDamage (100);
+    }
     
     // Taking Damage when Hit with Missile or Bullet.
     void OnCollisionEnter(Collision collision) {
         if (fsm.CurrentStateID == ZombieFSMStateID.Dead) {
-            if (!isExploding) {
-                isExploding = true;
-                Explode();
-                Destroy (gameObject, 4.0f);
-                return;
-            }
+            return;
         }
         
         if (collision.gameObject.tag == "Bullet") {

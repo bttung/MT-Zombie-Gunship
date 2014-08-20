@@ -37,7 +37,7 @@ public class ZombiePatrolState : ZombieFSMState {
             if (currentWayPoint >= wayPoints.Length) {
                 currentWayPoint = 0;
 
-                // If zombie entered the shelter, GameOver
+                // If zombie entered the shelter, GameOver ...
 
             }
         } else {

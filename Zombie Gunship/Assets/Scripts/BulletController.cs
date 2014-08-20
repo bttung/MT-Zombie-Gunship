@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bullet : MonoBehaviour {
+public class BulletController : MonoBehaviour {
 
     // Bullet is set as Laser and need Particle Effect
     public GameObject particleHit;

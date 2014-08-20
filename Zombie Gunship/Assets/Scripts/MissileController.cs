@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Missile : MonoBehaviour {
+public class MissileController : MonoBehaviour {
 
     public GameObject particleHit;
     public float speed = 20.0f;

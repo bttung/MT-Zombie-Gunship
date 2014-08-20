@@ -32,11 +32,6 @@ public abstract class ZombieFSMState {
 //    protected float curRotSpeed;
 //    protected float curSpeed;
 //    protected Vector3 desPos;
-//
-//    // Bullet
-//    public GameObject bullet;
-//    protected float shootRate;
-//    protected float elapsedTime;
 
     public void AddTransition(ZombieTransition trans, ZombieFSMStateID id) {
         // Check if anyone of the args is invalid
