@@ -9,7 +9,11 @@ public class ZombieController : ZombieAdvancedFSM {
 
         // Get the target Enemy
         GameObject human = GameObject.FindGameObjectWithTag ("Human");
+        humanTransform = human.transform;
 
+        if (!humanTransform) {
+            Debug.Log ("Human doesnt exist... Please add one with Tag named 'Human'");
+        }
     }
 
     private void ConstructFSM() {
@@ -34,14 +38,5 @@ public class ZombieController : ZombieAdvancedFSM {
         AddFSMState (chase);
         AddFSMState (attack);
         AddFSMState (dead);
-    }
-
-    public void SetTransition(ZombieTransition transition) {
-        PerformTransition (transition);
-    }
-
-    public void PerformTransition(ZombieTransition trans) {
-        // Check if the currentState has the transition passed as a argument
-
     }
 }

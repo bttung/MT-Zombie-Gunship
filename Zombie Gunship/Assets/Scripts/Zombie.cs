@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Zombie : MonoBehaviour {
+public class Zombie : Living {
 
 	// Use this for initialization
 	void Start () {

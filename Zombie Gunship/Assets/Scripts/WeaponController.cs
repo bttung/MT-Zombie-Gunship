@@ -3,8 +3,7 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour {
 
-	public WeaponBullet gun;
-	public WeaponCanon canon;
+	public WeaponGun gun;
 	public WeaponMissile missile;
 
 	// Use this for initialization

@@ -2,26 +2,36 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class ZombieFSMState {
+public abstract class ZombieFSMState : MonoBehaviour{
 
-    protected Transform[] waypoints;
-    protected Vector3 desPos;
-    protected ZombieFSMStateID stateID;
+    public ZombieFSMStateID stateID;
     protected float curRotSpeed;
     protected float curSpeed;
+    protected Vector3 desPos;
+
+    // Bullet
+    public GameObject bullet;
+    protected float shootRate;
+    protected float elapsedTime;
 
     protected Dictionary<ZombieTransition, ZombieFSMStateID> map = new Dictionary<ZombieTransition, ZombieFSMStateID>();
 
-    public void AddTransition(ZombieTransition transition, ZombieFSMStateID state) {
+    public ZombieFSMStateID GetOutputState(ZombieTransition trans) {
+        ZombieFSMStateID id;
+        bool hasValue = map.TryGetValue (trans, out id);
+        if (hasValue) {
+            return id;
+        } else {
+            return ZombieFSMStateID.None;
+        }
+    }
 
+    public void AddTransition(ZombieTransition transition, ZombieFSMStateID state) {
+        map.Add (transition, state);
     }
 
     public void DeleteTransition(ZombieTransition transition) {
-
-    }
-
-    public void GetOutPutState(ZombieTransition transition) {
-
+        map.Remove (transition);
     }
 
     public abstract void Reason(Transform human, Transform npc);

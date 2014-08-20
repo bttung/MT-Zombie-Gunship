@@ -11,21 +11,19 @@ public class ZombiePatrolState : ZombieFSMState {
     }
 
     public override void Reason(Transform human, Transform npc) {
-        // Check the distance with human
-        // When distance is near, transition to the chase state
+        // Check the distance with human, When distance is near, transition to the chase state
         if (Vector3.Distance (npc.position, human.position) <= 300.0f) {
             Debug.Log ("Switch to Chase State");
-
-//            npc.GetComponent<ZombieController>().SetTransition(Transition.SawHuman);
+            npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.SawHuman);
         }
     }
 
     public override void Act(Transform human, Transform npc) {
         // If the target is reached
-        if (Vector3.Distance (npc.position, desPos) <= 100.0f) {
-            Debug.Log ("Reachec the desitnation");
+        if (Vector3.Distance (npc.position, desPos) <= 5.0f) {
+            Debug.Log ("Reached the desitnation");
 
-            // Do something here...
+            // Do PathPlanning
         }
 
         // Rotate to the target point

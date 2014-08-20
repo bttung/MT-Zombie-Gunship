@@ -47,17 +47,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Bullet.cs" />
-     <Compile Include="Assets\Scripts\Canon.cs" />
-     <Compile Include="Assets\Scripts\FSM.cs" />
      <Compile Include="Assets\Scripts\Human.cs" />
-     <Compile Include="Assets\Scripts\LivingCreature.cs" />
+     <Compile Include="Assets\Scripts\Living.cs" />
      <Compile Include="Assets\Scripts\Missile.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
-     <Compile Include="Assets\Scripts\SimpleFSM.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />
-     <Compile Include="Assets\Scripts\WeaponBullet.cs" />
-     <Compile Include="Assets\Scripts\WeaponCanon.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
+     <Compile Include="Assets\Scripts\WeaponGun.cs" />
      <Compile Include="Assets\Scripts\WeaponMissile.cs" />
      <Compile Include="Assets\Scripts\Zombie.cs" />
      <Compile Include="Assets\Scripts\ZombieAdvancedFSM.cs" />
@@ -67,6 +63,8 @@
      <Compile Include="Assets\Scripts\ZombieDeadState.cs" />
      <Compile Include="Assets\Scripts\ZombieFSMState.cs" />
      <Compile Include="Assets\Scripts\ZombiePatrolState.cs" />
+     <None Include="Assets\Scripts\bak\FSM.txt" />
+     <None Include="Assets\Scripts\bak\SimpleFSM.txt" />
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>

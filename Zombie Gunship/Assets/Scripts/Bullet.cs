@@ -16,8 +16,8 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//        transform.Translate (new Vector3 (0, 0, speed * Time.deltaTime));
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.Translate (new Vector3 (0, 0, speed * Time.deltaTime));
+//        transform.position += transform.forward * speed * Time.deltaTime;
 	}
 
     void OnCollisionEnter(Collision collision) {

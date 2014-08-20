@@ -1,8 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AdvancedFSM.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Human.cs">
     <Files>
-      <File FileName="Assets/Scripts/AdvancedFSM.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WeaponGun.cs" Line="45" Column="48" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="19" Column="19" />
+      <File FileName="Assets/Scripts/ZombieAttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WeaponController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WeaponMissile.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Missile.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Human.cs" Line="4" Column="35" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
