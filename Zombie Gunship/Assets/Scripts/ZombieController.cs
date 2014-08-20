@@ -3,6 +3,15 @@ using System.Collections;
 
 public class ZombieController : ZombieAdvancedFSM {
 
+    protected override void Initialize() {
+        // Start Doing the Finite State Machine
+        ConstructFSM ();
+
+        // Get the target Enemy
+        GameObject human = GameObject.FindGameObjectWithTag ("Human");
+
+    }
+
     private void ConstructFSM() {
         ZombiePatrolState patrol = new ZombiePatrolState ();
         patrol.AddTransition (ZombieTransition.SawHuman, ZombieFSMStateID.Chasing);

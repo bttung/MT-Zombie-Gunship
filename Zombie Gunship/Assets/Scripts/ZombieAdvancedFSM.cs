@@ -21,6 +21,8 @@ public enum ZombieFSMStateID {
 public class ZombieAdvancedFSM : MonoBehaviour{
 
     private List<ZombieFSMState> fsmStates;
+
+    // Method that Implements Class Should Override.
     protected virtual void Initialize() {}
     protected virtual void FSMUpdate() {}
     protected virtual void FSMFixedUpdate() {}
