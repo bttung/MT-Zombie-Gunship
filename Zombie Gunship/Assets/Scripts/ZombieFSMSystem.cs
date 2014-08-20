@@ -53,11 +53,7 @@ public class ZombieFSMSystem {
         }
 
         Debug.LogError ("FSM Error: Impossible to delete state " + id.ToString() + ". It was not on the list of states");
-    }
-
-//    // whether the Zombie is destroyed or not
-//    private bool dead;
-//    private int health;
+    } 
 
     public void PerformTransition(ZombieTransition trans) {
         // Check for None Transition before changing the current state
@@ -83,37 +79,4 @@ public class ZombieFSMSystem {
         }
         
     }
-    
-//    protected void Explode() {
-//        float rndX = Random.Range (10.0f, 30.0f);
-//        float rndZ = Random.Range (10.0f, 30.0f);
-//        for (int i = 0; i < 3; i++) {
-//            rigidbody.AddExplosionForce(10000.0f, transform.position - new Vector3(rndX, 10.0f, rndZ), 40.0f, 10.0f);
-//            rigidbody.velocity = transform.TransformDirection(new Vector3(rndX, 20.0f, rndZ));
-//        }
-//        
-//        Destroy (gameObject, 1.5f);
-//    }
-//    
-//    // Taking Damage when Hit with Missile or Bullet.
-//    void OnCollisionEnter(Collision collision) {
-//        if (dead) {
-//            return;
-//        }
-//        
-//        if (collision.gameObject.tag == "Bullet") {
-//            Debug.Log ("Hit with Bullet");
-//            health -= 30;
-//        } else if (collision.gameObject.tag == "Missile") {
-//            Debug.Log("Hit with Missile");
-//            health -= 50;
-//        }
-//        
-//        if (health <= 0) {
-//            dead = true;
-//            Explode();
-//            Destroy (gameObject, 4.0f);
-//        }
-//    }
-
 }

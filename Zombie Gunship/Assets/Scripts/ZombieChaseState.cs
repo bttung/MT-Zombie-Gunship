@@ -20,6 +20,12 @@ public class ZombieChaseState : ZombieFSMState  {
             Debug.Log ("Switch to Patrol State");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.LostHuman);
         }
+
+        // Check whether the zombie alive
+        if (dead || health <= 0) {
+            Debug.Log ("Zombie Wanna Die");
+            npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.NoHealth);
+        }
     }
     
     public override void Act(GameObject human, GameObject npc) {

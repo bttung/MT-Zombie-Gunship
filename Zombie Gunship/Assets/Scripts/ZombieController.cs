@@ -9,6 +9,7 @@ public class ZombieController : MonoBehaviour {
     public GameObject player;
     public Transform[] path;
     private ZombieFSMSystem fsm;
+    private bool isExploding = false;
 
     public void SetTransition(ZombieTransition trans) {fsm.PerformTransition(trans);}
 
@@ -46,4 +47,36 @@ public class ZombieController : MonoBehaviour {
         fsm.AddState (attack);
         fsm.AddState (dead);
     }
+
+    protected void Explode() {
+        float rndX = Random.Range (10.0f, 30.0f);
+        float rndZ = Random.Range (10.0f, 30.0f);
+        for (int i = 0; i < 3; i++) {
+            rigidbody.AddExplosionForce(10000.0f, transform.position - new Vector3(rndX, 10.0f, rndZ), 40.0f, 10.0f);
+            rigidbody.velocity = transform.TransformDirection(new Vector3(rndX, 20.0f, rndZ));
+        }
+        
+        Destroy (gameObject, 1.5f);
+    }
+    
+    // Taking Damage when Hit with Missile or Bullet.
+    void OnCollisionEnter(Collision collision) {
+        if (fsm.CurrentState == ZombieFSMStateID.Dead) {
+            if (!isExploding) {
+                isExploding = true;
+                Explode();
+                Destroy (gameObject, 4.0f);
+                return;
+            }
+        }
+        
+        if (collision.gameObject.tag == "Bullet") {
+            Debug.Log ("Hit with Bullet");
+            fsm.CurrentState.TakeDamage(30);
+        } else if (collision.gameObject.tag == "Missile") {
+            Debug.Log("Hit with Missile");
+            fsm.CurrentState.TakeDamage(50);
+        }
+    }
+
 }

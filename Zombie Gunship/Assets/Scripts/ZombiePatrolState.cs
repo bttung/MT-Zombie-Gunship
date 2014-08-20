@@ -18,6 +18,12 @@ public class ZombiePatrolState : ZombieFSMState {
             Debug.Log ("Switch to Chase State");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.SawHuman);
         }
+
+        // Check whether the zombie alive
+        if (dead || health <= 0) {
+            Debug.Log ("Zombie Wanna Die");
+            npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.NoHealth);
+        }
     }
 
     public override void Act(GameObject human, GameObject npc) {
@@ -25,7 +31,7 @@ public class ZombiePatrolState : ZombieFSMState {
         Vector3 vel = npc.rigidbody.velocity;
         Vector3 moveDir = wayPoints[currentWayPoint].position - npc.transform.position;
 
-        if (moveDir.magnitude < 5.0f) {
+        if (moveDir.magnitude < 50.0f) {
             Debug.Log ("Reached the desitnation");
             currentWayPoint++;
             if (currentWayPoint >= wayPoints.Length) {

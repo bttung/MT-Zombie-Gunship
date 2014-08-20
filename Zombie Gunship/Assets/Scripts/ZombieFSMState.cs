@@ -19,11 +19,15 @@ public enum ZombieFSMStateID {
     Dead,
 }
 
-public abstract class ZombieFSMState : MonoBehaviour{
+public abstract class ZombieFSMState {
 
     protected Dictionary<ZombieTransition, ZombieFSMStateID> map = new Dictionary<ZombieTransition, ZombieFSMStateID>();
     public ZombieFSMStateID stateID;
-    public ZombieFSMStateID ID{get {return stateID;}}
+    public ZombieFSMStateID ID {get {return stateID;} }
+
+    // whether the Zombie is destroyed or not
+    protected bool dead = false; 
+    protected int health = 100;
 
 //    protected float curRotSpeed;
 //    protected float curSpeed;
@@ -78,6 +82,14 @@ public abstract class ZombieFSMState : MonoBehaviour{
             return map[trans];
         }
         return ZombieFSMStateID.None;
+    }
+
+    public void TakeDamage(int damage) {
+        health -= damage;
+    }
+
+    public void Die() {
+        dead = true;
     }
 
     public abstract void Reason(GameObject human, GameObject npc);
