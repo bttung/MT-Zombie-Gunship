@@ -33,7 +33,6 @@ public class LivingCreature : MonoBehaviour {
             Expode();
             Destroy(gameObject, 4.0f);
         }
-
     }
 
     void Expode() {

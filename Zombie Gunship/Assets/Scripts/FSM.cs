@@ -4,7 +4,7 @@ using System.Collections;
 public class FSM : MonoBehaviour {
 
     // Player Transform
-    protected Transform playerTransform;
+    protected Transform humanTransform;
 
     // Next Destination position of Zombie
     protected Vector3 destPos;
