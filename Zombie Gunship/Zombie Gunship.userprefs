@@ -1,21 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WeaponMissile.cs">
-    <Files>
-      <File FileName="Assets/Scripts/ZombieFSMState.cs" Line="35" Column="1" />
-      <File FileName="Assets/Scripts/ZombieDeadState.cs" Line="7" Column="41" />
-      <File FileName="Assets/Scripts/ZombieChaseState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ZombiePatrolState.cs" Line="40" Column="63" />
-      <File FileName="Assets/Scripts/ZombieAttackState.cs" Line="40" Column="57" />
-      <File FileName="Assets/Scripts/HumanController.cs" Line="17" Column="9" />
-      <File FileName="Assets/Scripts/BulletController.cs" Line="4" Column="31" />
-      <File FileName="Assets/Scripts/MissileController.cs" Line="4" Column="32" />
-      <File FileName="Assets/Scripts/PlaneController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WeaponController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WeaponGun.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WeaponMissile.cs" Line="59" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

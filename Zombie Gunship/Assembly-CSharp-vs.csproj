@@ -48,6 +48,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\HumanController.cs" />
+     <Compile Include="Assets\Scripts\HumanDeadState.cs" />
+     <Compile Include="Assets\Scripts\HumanFSMState.cs" />
+     <Compile Include="Assets\Scripts\HumanFSMSystem.cs" />
+     <Compile Include="Assets\Scripts\HumanPatrolState.cs" />
      <Compile Include="Assets\Scripts\MissileController.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
