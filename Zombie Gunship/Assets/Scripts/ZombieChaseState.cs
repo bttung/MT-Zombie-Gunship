@@ -3,29 +3,37 @@ using System.Collections;
 
 public class ZombieChaseState : ZombieFSMState  {
 
-    // Check the new reason to change state
-    public override void Reason(Transform human, Transform npc) {
-        // Set the target position as human position
-        desPos = human.position;
+    public ZombieChaseState() {
+        stateID = ZombieFSMStateID.Chasing;
+    }
 
+    // Check the new reason to change state
+    public override void Reason(GameObject human, GameObject npc) {
         // Check the distance with human, when the distance is near, transition to attack state
-        float dist = Vector3.Distance (npc.position, desPos);
-        if (dist <= 60.0f) {
+        if (Vector3.Distance (npc.transform.position, human.transform.position) <= 60.0f) {
             Debug.Log("Switch to Attack State");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.ReachHuman);
         }
 
         // Go back to patrol if it become too far
-        if (dist >= 110.0f) {
+        if (Vector3.Distance (npc.transform.position, human.transform.position) >= 110.0f) {
             Debug.Log ("Switch to Patrol State");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.LostHuman);
         }
     }
     
-    public override void Act(Transform human, Transform npc) {
-        // Rotate to the target point
-        desPos = human.position;
+    public override void Act(GameObject human, GameObject npc) {
+        // Follow the path of waypoints, Find the direction of human
+        Vector3 vel = npc.rigidbody.velocity;
+        Vector3 moveDir = human.transform.position - npc.transform.position;
 
-        // Head to the destination .... 
+        // Rotate toward the waypoint
+        npc.transform.rotation = Quaternion.Slerp (npc.transform.rotation, Quaternion.LookRotation (moveDir), 5 * Time.deltaTime);
+        npc.transform.eulerAngles = new Vector3 (0, npc.transform.eulerAngles.y, 0);
+
+        vel = moveDir.normalized * 10;
+
+        // Apply the Velocity
+        npc.rigidbody.velocity = vel;
     }
 }

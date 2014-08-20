@@ -2,39 +2,85 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+public enum ZombieTransition {
+    None = 0,
+    SawHuman,
+    ReachHuman,
+    LostHuman,
+    NoHealth,
+}
+
+public enum ZombieFSMStateID {
+    None = 0,
+    Patrolling,
+    Chasing,
+    Atakking,
+    Dead,
+}
+
 public abstract class ZombieFSMState : MonoBehaviour{
 
-    public ZombieFSMStateID stateID;
-    protected float curRotSpeed;
-    protected float curSpeed;
-    protected Vector3 desPos;
-
-    // Bullet
-    public GameObject bullet;
-    protected float shootRate;
-    protected float elapsedTime;
-
     protected Dictionary<ZombieTransition, ZombieFSMStateID> map = new Dictionary<ZombieTransition, ZombieFSMStateID>();
+    public ZombieFSMStateID stateID;
+    public ZombieFSMStateID ID{get {return stateID;}}
+
+//    protected float curRotSpeed;
+//    protected float curSpeed;
+//    protected Vector3 desPos;
+//
+//    // Bullet
+//    public GameObject bullet;
+//    protected float shootRate;
+//    protected float elapsedTime;
+
+    public void AddTransition(ZombieTransition trans, ZombieFSMStateID id) {
+        // Check if anyone of the args is invalid
+        if (trans == ZombieTransition.None) {
+            Debug.LogError ("FSMState Error: None is not allowed for a real Transition");
+            return;
+        }
+
+        if (id == ZombieFSMStateID.None) {
+            Debug.LogError ("FSMState Error: None is not allowed for a real ID");
+            return;
+        }
+
+        // Since this is a Deterministic FSM, check fi the current transition was already inside the map
+        if (map.ContainsKey (trans)) {
+            Debug.LogError("FSMState Error: State " + stateID.ToString() + "already has transition" + trans.ToString() + " Impossible to assign to another state");
+            return;
+        }
+
+        map.Add (trans, id);
+    }
+    
+    public void DeleteTransition(ZombieTransition trans) {
+        // Check for None Transition
+        if (trans == ZombieTransition.None) {
+            Debug.LogError("FSMState Error: None transition is not allowed");
+            return;
+        }
+
+        // Check if the pair is inside the map before deleting
+        if (map.ContainsKey (trans)) {
+            map.Remove(trans);
+            return;
+        }
+
+        Debug.LogError ("FSMState Error: Transition " + trans.ToString() + " passed to " + stateID.ToString() + "was not on the state's transition list");
+    }
+
 
     public ZombieFSMStateID GetOutputState(ZombieTransition trans) {
-        ZombieFSMStateID id;
-        bool hasValue = map.TryGetValue (trans, out id);
-        if (hasValue) {
-            return id;
-        } else {
-            return ZombieFSMStateID.None;
+        // Check if the map has this transition
+        if (map.ContainsKey (trans)) {
+            return map[trans];
         }
+        return ZombieFSMStateID.None;
     }
 
-    public void AddTransition(ZombieTransition transition, ZombieFSMStateID state) {
-        map.Add (transition, state);
-    }
-
-    public void DeleteTransition(ZombieTransition transition) {
-        map.Remove (transition);
-    }
-
-    public abstract void Reason(Transform human, Transform npc);
-    public abstract void Act(Transform player, Transform npc);
+    public abstract void Reason(GameObject human, GameObject npc);
+    public abstract void Act(GameObject human, GameObject npc);
 
 }

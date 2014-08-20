@@ -56,12 +56,12 @@
      <Compile Include="Assets\Scripts\WeaponGun.cs" />
      <Compile Include="Assets\Scripts\WeaponMissile.cs" />
      <Compile Include="Assets\Scripts\Zombie.cs" />
-     <Compile Include="Assets\Scripts\ZombieAdvancedFSM.cs" />
      <Compile Include="Assets\Scripts\ZombieAttackState.cs" />
      <Compile Include="Assets\Scripts\ZombieChaseState.cs" />
      <Compile Include="Assets\Scripts\ZombieController.cs" />
      <Compile Include="Assets\Scripts\ZombieDeadState.cs" />
      <Compile Include="Assets\Scripts\ZombieFSMState.cs" />
+     <Compile Include="Assets\Scripts\ZombieFSMSystem.cs" />
      <Compile Include="Assets\Scripts\ZombiePatrolState.cs" />
      <None Include="Assets\Scripts\bak\FSM.txt" />
      <None Include="Assets\Scripts\bak\SimpleFSM.txt" />

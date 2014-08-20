@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Text;
 
-public class ZombieController : ZombieAdvancedFSM {
+[RequireComponent(typeof(Rigidbody))]
+public class ZombieController : MonoBehaviour {
 
-    protected override void Initialize() {
-        // Start Doing the Finite State Machine
+    public GameObject player;
+    public Transform[] path;
+    private ZombieFSMSystem fsm;
+
+    public void SetTransition(ZombieTransition trans) {fsm.PerformTransition(trans);}
+
+    public void Start() {
         ConstructFSM ();
-
-        // Get the target Enemy
-        GameObject human = GameObject.FindGameObjectWithTag ("Human");
-        humanTransform = human.transform;
-
-        if (!humanTransform) {
-            Debug.Log ("Human doesnt exist... Please add one with Tag named 'Human'");
-        }
     }
 
+    public void FixedUpdate() {
+        fsm.CurrentState.Reason (player, gameObject);
+        fsm.CurrentState.Act (player, gameObject);
+    }
+
+    // The NPC has 4 states: Patrol, Chasing, Attack, Dead
     private void ConstructFSM() {
-        ZombiePatrolState patrol = new ZombiePatrolState ();
+        ZombiePatrolState patrol = new ZombiePatrolState (path);
         patrol.AddTransition (ZombieTransition.SawHuman, ZombieFSMStateID.Chasing);
         patrol.AddTransition (ZombieTransition.NoHealth, ZombieFSMStateID.Dead);
 
@@ -34,9 +40,10 @@ public class ZombieController : ZombieAdvancedFSM {
         ZombieDeadState dead = new ZombieDeadState ();
         dead.AddTransition (ZombieTransition.NoHealth, ZombieFSMStateID.Dead);
 
-        AddFSMState (patrol);
-        AddFSMState (chase);
-        AddFSMState (attack);
-        AddFSMState (dead);
+        fsm = new ZombieFSMSystem ();
+        fsm.AddState (patrol);
+        fsm.AddState (chase);
+        fsm.AddState (attack);
+        fsm.AddState (dead);
     }
 }

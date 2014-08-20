@@ -3,11 +3,11 @@ using System.Collections;
 
 public class ZombieDeadState : ZombieFSMState {
 
-    public override void Reason(Transform human, Transform npc) {
+    public override void Reason(GameObject human, GameObject npc) {
         
     }
     
-    public override void Act(Transform human, Transform npc) {
+    public override void Act(GameObject human, GameObject npc) {
         
     }
 }
