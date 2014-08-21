@@ -23,6 +23,7 @@ public class ZombieFSMSystem {
             Debug.LogError ("ZombieFSM Error: Null reference is not allowed");
         }
 
+        // First State inserted also the initial state, the state the machine  is in when the simulation begins
         if (states.Count == 0) {
             states.Add(state);
             currentState = state;

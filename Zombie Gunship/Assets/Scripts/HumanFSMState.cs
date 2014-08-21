@@ -72,12 +72,16 @@ public abstract class HumanFSMState {
     }
 
     public void TakeDamage(int damage) {
+        if (dead) {
+            return;
+        }
+
         health -= damage;
+        if (health <= 0) {
+            dead = true;
+            health = 0;
+        }
     }
-    
-//    public void Die() {
-//        dead = true;
-//    }
     
     public abstract void Reason(GameObject npc);
     public abstract void Act(GameObject npc);

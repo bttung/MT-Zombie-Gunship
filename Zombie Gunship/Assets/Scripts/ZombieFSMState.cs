@@ -82,7 +82,15 @@ public abstract class ZombieFSMState {
     }
 
     public void TakeDamage(int damage) {
+        if (dead) {
+            return;
+        }
+
         health -= damage;
+        if (health <= 0) {
+            dead = true;
+            health = 0;
+        }
     }
 
 //    public void Die() {

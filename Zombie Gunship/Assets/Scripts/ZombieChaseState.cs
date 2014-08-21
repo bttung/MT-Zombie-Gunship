@@ -22,7 +22,7 @@ public class ZombieChaseState : ZombieFSMState  {
         }
 
         // Check whether the zombie alive
-        if (dead || health <= 0) {
+        if (dead) {
             Debug.Log ("Zombie Wanna Die");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.NoHealth);
         }

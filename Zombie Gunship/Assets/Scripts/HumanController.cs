@@ -48,7 +48,11 @@ public class HumanController : MonoBehaviour {
 
 
     public void TakeDamage(int damage) {
+        if (fsm.CurrentStateID == HumanFSMStateID.Dead) {
+            return;
+        }
 
+        fsm.CurrentState.TakeDamage (damage);
     }
 
     void OnTriggerEnter(Collider other) {

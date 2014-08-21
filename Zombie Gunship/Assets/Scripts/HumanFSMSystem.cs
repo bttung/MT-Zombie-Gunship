@@ -22,7 +22,8 @@ public class HumanFSMSystem {
         if (state == null) {
             Debug.LogError ("HumanFSM Error: Null reference is not allowed");
         }
-        
+
+        // First State inserted also the initial state, the state the machine  is in when the simulation begins
         if (states.Count == 0) {
             states.Add(state);
             currentState = state;
