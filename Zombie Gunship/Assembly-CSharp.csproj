@@ -66,9 +66,6 @@
      <Compile Include="Assets\Scripts\ZombieFSMSystem.cs" />
      <Compile Include="Assets\Scripts\ZombiePatrolState.cs" />
      <Compile Include="Assets\Scripts\ZombieWinState.cs" />
-     <None Include="Assets\Scripts\bak\FSM.txt" />
-     <None Include="Assets\Scripts\bak\SimpleFSM.txt" />
-     <None Include="Assets\Scripts\bak\Living.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
