@@ -31,16 +31,19 @@ public class ZombieController : MonoBehaviour {
         ZombiePatrolState patrol = new ZombiePatrolState (path);
         patrol.AddTransition (ZombieTransition.SawHuman, ZombieFSMStateID.Chasing);
         patrol.AddTransition (ZombieTransition.NoHealth, ZombieFSMStateID.Dead);
+        patrol.AddTransition (ZombieTransition.ReachShelter, ZombieFSMStateID.Win);
 
         ZombieChaseState chase = new ZombieChaseState ();
         chase.AddTransition (ZombieTransition.LostHuman, ZombieFSMStateID.Patrolling);
         chase.AddTransition (ZombieTransition.ReachHuman, ZombieFSMStateID.Atakking);
         chase.AddTransition (ZombieTransition.NoHealth, ZombieFSMStateID.Dead);
+        chase.AddTransition (ZombieTransition.ReachShelter, ZombieFSMStateID.Win);
 
         ZombieAttackState attack = new ZombieAttackState ();
         attack.AddTransition (ZombieTransition.LostHuman, ZombieFSMStateID.Patrolling);
         attack.AddTransition (ZombieTransition.SawHuman, ZombieFSMStateID.Chasing);
         attack.AddTransition (ZombieTransition.NoHealth, ZombieFSMStateID.Dead);
+        attack.AddTransition (ZombieTransition.ReachShelter, ZombieFSMStateID.Win);
 
         ZombieDeadState dead = new ZombieDeadState ();
         dead.AddTransition (ZombieTransition.NoHealth, ZombieFSMStateID.Dead);
@@ -86,6 +89,12 @@ public class ZombieController : MonoBehaviour {
         } else if (collision.gameObject.tag == "Missile") {
             Debug.Log("Hit with Missile");
             fsm.CurrentState.TakeDamage(50);
+        }
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag == "Shelter") {
+            SetTransition(ZombieTransition.ReachShelter);
         }
     }
 

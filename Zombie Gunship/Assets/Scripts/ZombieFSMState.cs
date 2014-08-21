@@ -8,6 +8,7 @@ public enum ZombieTransition {
     SawHuman,
     ReachHuman,
     LostHuman,
+    ReachShelter,
     NoHealth,
 }
 
@@ -16,6 +17,7 @@ public enum ZombieFSMStateID {
     Patrolling,
     Chasing,
     Atakking,
+    Win,
     Dead,
 }
 
@@ -36,18 +38,18 @@ public abstract class ZombieFSMState {
     public void AddTransition(ZombieTransition trans, ZombieFSMStateID id) {
         // Check if anyone of the args is invalid
         if (trans == ZombieTransition.None) {
-            Debug.LogError ("FSMState Error: None is not allowed for a real Transition");
+            Debug.LogError ("ZombieFSMState Error: None is not allowed for a real Transition");
             return;
         }
 
         if (id == ZombieFSMStateID.None) {
-            Debug.LogError ("FSMState Error: None is not allowed for a real ID");
+            Debug.LogError ("ZombieFSMState Error: None is not allowed for a real ID");
             return;
         }
 
         // Since this is a Deterministic FSM, check fi the current transition was already inside the map
         if (map.ContainsKey (trans)) {
-            Debug.LogError("FSMState Error: State " + stateID.ToString() + "already has transition" + trans.ToString() + " Impossible to assign to another state");
+            Debug.LogError("ZombieFSMState Error: State " + stateID.ToString() + "already has transition" + trans.ToString() + " Impossible to assign to another state");
             return;
         }
 
@@ -57,7 +59,7 @@ public abstract class ZombieFSMState {
     public void DeleteTransition(ZombieTransition trans) {
         // Check for None Transition
         if (trans == ZombieTransition.None) {
-            Debug.LogError("FSMState Error: None transition is not allowed");
+            Debug.LogError("ZombieFSMState Error: None transition is not allowed");
             return;
         }
 
@@ -67,7 +69,7 @@ public abstract class ZombieFSMState {
             return;
         }
 
-        Debug.LogError ("FSMState Error: Transition " + trans.ToString() + " passed to " + stateID.ToString() + "was not on the state's transition list");
+        Debug.LogError ("ZombieFSMState Error: Transition " + trans.ToString() + " passed to " + stateID.ToString() + "was not on the state's transition list");
     }
 
 
@@ -83,9 +85,9 @@ public abstract class ZombieFSMState {
         health -= damage;
     }
 
-    public void Die() {
-        dead = true;
-    }
+//    public void Die() {
+//        dead = true;
+//    }
 
     public abstract void Reason(GameObject human, GameObject npc);
     public abstract void Act(GameObject human, GameObject npc);

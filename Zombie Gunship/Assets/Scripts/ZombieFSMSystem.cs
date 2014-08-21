@@ -20,7 +20,7 @@ public class ZombieFSMSystem {
     public void AddState(ZombieFSMState state) {
         // Check for Null Reference before Adding
         if (state == null) {
-            Debug.LogError ("FSM Error: Null reference is not allowed");
+            Debug.LogError ("ZombieFSM Error: Null reference is not allowed");
         }
 
         if (states.Count == 0) {
@@ -33,7 +33,7 @@ public class ZombieFSMSystem {
         // Add the state to the List if it is not inside it
         foreach(ZombieFSMState s in states) {
             if (s.ID == state.ID) {
-                Debug.LogError("FSM Error: Impossible to add state " + state.ID.ToString() + " because state has already been added");
+                Debug.LogError("ZombieFSM Error: Impossible to add state " + state.ID.ToString() + " because state has already been added");
                 return;
             }
         }
@@ -44,7 +44,7 @@ public class ZombieFSMSystem {
     public void DeleteState(ZombieFSMStateID id) {
         // Check for None State before deleting
         if (id == ZombieFSMStateID.None) {
-            Debug.LogError("FSM Error: None is not allowed for a real state");
+            Debug.LogError("ZombieFSM Error: None is not allowed for a real state");
             return;
         }
 
@@ -56,20 +56,20 @@ public class ZombieFSMSystem {
             }
         }
 
-        Debug.LogError ("FSM Error: Impossible to delete state " + id.ToString() + ". It was not on the list of states");
+        Debug.LogError ("ZombieFSM Error: Impossible to delete state " + id.ToString() + ". It was not on the list of states");
     } 
 
     public void PerformTransition(ZombieTransition trans) {
         // Check for None Transition before changing the current state
         if (trans == ZombieTransition.None) {
-            Debug.LogError("FSM Error: None Transition is not allowed for a real transition");
+            Debug.LogError("ZombieFSM Error: None Transition is not allowed for a real transition");
             return;
         }
 
         // Check if the currentState has the transition passed as argument
         ZombieFSMStateID id = currentState.GetOutputState (trans);
         if (id == ZombieFSMStateID.None) {
-            Debug.LogError ("FSM Error: State " + currentStateID.ToString() + " doesn't have a target state for transition " + trans.ToString());
+            Debug.LogError ("ZombieFSM Error: State " + currentStateID.ToString() + " doesn't have a target state for transition " + trans.ToString());
             return;
         }
         
@@ -83,6 +83,6 @@ public class ZombieFSMSystem {
                 break;
             }
         }
-        
     }
+    
 }
