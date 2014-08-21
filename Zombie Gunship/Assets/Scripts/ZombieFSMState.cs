@@ -97,7 +97,7 @@ public abstract class ZombieFSMState {
 //        dead = true;
 //    }
 
-    public abstract void Reason(GameObject human, GameObject npc);
-    public abstract void Act(GameObject human, GameObject npc);
+    public abstract void Reason(Transform target, Transform human, Transform npc);
+    public abstract void Act(Transform target, Transform human, Transform npc);
 
 }

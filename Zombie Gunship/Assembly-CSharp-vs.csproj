@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\HumanFleeState.cs" />
      <Compile Include="Assets\Scripts\HumanShelterState.cs" />
      <Compile Include="Assets\Scripts\MissileController.cs" />
+     <Compile Include="Assets\Scripts\PathPlan.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
      <Compile Include="Assets\Scripts\WeaponGun.cs" />

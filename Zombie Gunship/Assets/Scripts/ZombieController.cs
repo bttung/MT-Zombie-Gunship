@@ -6,7 +6,11 @@ using System.Text;
 [RequireComponent(typeof(Rigidbody))]
 public class ZombieController : MonoBehaviour {
 
+    public GameObject shelter;
     public GameObject human;
+    public GameObject target;
+    protected NavMeshAgent agent;
+
     public Transform[] path;
     private ZombieFSMSystem fsm;
 
@@ -19,9 +23,11 @@ public class ZombieController : MonoBehaviour {
 
     public void Start() {
         ConstructFSM ();
+        agent = gameObject.GetComponent<NavMeshAgent> ();
     }
 
     public void FixedUpdate() {
+
         fsm.CurrentState.Reason (human, gameObject);
         fsm.CurrentState.Act (human, gameObject);
     }

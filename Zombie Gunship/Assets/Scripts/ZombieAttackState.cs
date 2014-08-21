@@ -10,7 +10,7 @@ public class ZombieAttackState : ZombieFSMState {
         stateID = ZombieFSMStateID.Atakking;
     }
 
-    public override void Reason(GameObject human, GameObject npc) {
+    public override void Reason(Transform target, Transform human, NavMeshAgent agent, Transform npc) {
 
         // Check the distance with human, When distance is near, transition to the chase state
         float dist = Vector3.Distance (npc.transform.position, human.transform.position);
@@ -35,7 +35,7 @@ public class ZombieAttackState : ZombieFSMState {
         }
     }
 
-    public override void Act(GameObject human, GameObject npc) {
+    public override void Act(Transform target, Transform human, NavMeshAgent agent, Transform npc) {
         // Attack Human
         npc.GetComponent<ZombieController> ().Attack ();
     }
