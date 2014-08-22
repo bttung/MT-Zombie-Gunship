@@ -8,8 +8,8 @@ public class ZombieController : MonoBehaviour {
 
     public GameObject shelter;
     public GameObject human;
-    public GameObject target;
-    protected NavMeshAgent agent;
+//    public GameObject target;
+    public NavMeshAgent agent;
 
     public Transform[] path;
     private ZombieFSMSystem fsm;
@@ -27,9 +27,13 @@ public class ZombieController : MonoBehaviour {
     }
 
     public void FixedUpdate() {
+        if (human == null) {
+            Debug.Log("Game Over");
+            return;
+        }
 
-        fsm.CurrentState.Reason (human, gameObject);
-        fsm.CurrentState.Act (human, gameObject);
+        fsm.CurrentState.Reason (shelter.transform, human.transform, gameObject.transform);
+        fsm.CurrentState.Act (shelter.transform, human.transform, gameObject.transform);
     }
 
     // The NPC has 4 states: Patrol, Chasing, Attack, Dead
@@ -77,6 +81,8 @@ public class ZombieController : MonoBehaviour {
         if (human == null) {
             return;
         }
+
+        Debug.Log ("Attack human");
 
         // Attack Human
         // Start the Attack Coroutine ...

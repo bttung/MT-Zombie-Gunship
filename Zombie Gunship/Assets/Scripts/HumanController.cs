@@ -36,23 +36,24 @@ public class HumanController : MonoBehaviour {
     }
     
     public void Explode() {
-        float rndX = Random.Range (10.0f, 30.0f);
-        float rndZ = Random.Range (10.0f, 30.0f);
-        for (int i = 0; i < 3; i++) {
-            rigidbody.AddExplosionForce(10000.0f, transform.position - new Vector3(rndX, 10.0f, rndZ), 40.0f, 10.0f);
-            rigidbody.velocity = transform.TransformDirection(new Vector3(rndX, 20.0f, rndZ));
-        }
-        
+//        float rndX = Random.Range (10.0f, 30.0f);
+//        float rndZ = Random.Range (10.0f, 30.0f);
+//        for (int i = 0; i < 3; i++) {
+//            rigidbody.AddExplosionForce(10000.0f, transform.position - new Vector3(rndX, 10.0f, rndZ), 40.0f, 10.0f);
+//            rigidbody.velocity = transform.TransformDirection(new Vector3(rndX, 20.0f, rndZ));
+//        }
+//        
         Destroy (gameObject, 1.5f);
     }
 
 
     public void TakeDamage(int damage) {
-        if (fsm.CurrentStateID == HumanFSMStateID.Dead) {
-            return;
-        }
-
+//        if (fsm.CurrentStateID == HumanFSMStateID.Dead) {
+//            return;
+//        }
+//
         fsm.CurrentState.TakeDamage (damage);
+
     }
 
     void OnTriggerEnter(Collider other) {

@@ -7,11 +7,11 @@ public class ZombieWinState : ZombieFSMState{
         stateID = ZombieFSMStateID.Win;
     }
 
-    public override void Reason(GameObject human, GameObject npc) {
+    public override void Reason(Transform target, Transform human, Transform npc) {
         // Zombie Win the game
     }
 
-    public override void Act(GameObject human, GameObject npc) {
+    public override void Act(Transform target, Transform human, Transform npc) {
         // Zombie Win the game
     }
 

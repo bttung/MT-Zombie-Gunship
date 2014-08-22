@@ -8,16 +8,19 @@ public class ZombieChaseState : ZombieFSMState  {
     }
 
     // Check the new reason to change state
-    public override void Reason(GameObject human, GameObject npc) {
+    public override void Reason(Transform target, Transform human, Transform npc) {
+
+        float dist = Vector3.Distance (npc.transform.position, human.transform.position);
+
         // Check the distance with human, when the distance is near, transition to attack state
-        if (Vector3.Distance (npc.transform.position, human.transform.position) <= 60.0f) {
-            Debug.Log("Switch to Attack State");
+        if (dist <= ATTACK_DIST_THRES) {
+            Debug.Log("Chase ---> Attack State");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.ReachHuman);
         }
 
         // Go back to patrol if it become too far
-        if (Vector3.Distance (npc.transform.position, human.transform.position) >= 110.0f) {
-            Debug.Log ("Switch to Patrol State");
+        if (dist >= SAW_DIST_THRES) {
+            Debug.Log ("Chase ---> Patrol State");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.LostHuman);
         }
 
@@ -28,18 +31,8 @@ public class ZombieChaseState : ZombieFSMState  {
         }
     }
     
-    public override void Act(GameObject human, GameObject npc) {
-        // Follow the path of waypoints, Find the direction of human
-        Vector3 vel = npc.rigidbody.velocity;
-        Vector3 moveDir = human.transform.position - npc.transform.position;
-
-        // Rotate toward the waypoint
-        npc.transform.rotation = Quaternion.Slerp (npc.transform.rotation, Quaternion.LookRotation (moveDir), 5 * Time.deltaTime);
-        npc.transform.eulerAngles = new Vector3 (0, npc.transform.eulerAngles.y, 0);
-
-        vel = moveDir.normalized * 10;
-
-        // Apply the Velocity
-        npc.rigidbody.velocity = vel;
+    public override void Act(Transform target, Transform human, Transform npc) {
+        // Navigation use NavMeshAgent
+        npc.GetComponent<ZombieController> ().agent.SetDestination (human.position);
     }
 }

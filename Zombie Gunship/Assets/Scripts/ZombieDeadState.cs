@@ -7,11 +7,11 @@ public class ZombieDeadState : ZombieFSMState {
         stateID = ZombieFSMStateID.Dead;
     }
 
-    public override void Reason(GameObject human, GameObject npc) {
+    public override void Reason(Transform target, Transform human, Transform npc) {
         // You Died!
     }
     
-    public override void Act(GameObject human, GameObject npc) {
+    public override void Act(Transform target, Transform human, Transform npc) {
         // Died
         if (!dead) {
             dead = true;

@@ -23,6 +23,10 @@ public enum ZombieFSMStateID {
 
 public abstract class ZombieFSMState {
 
+    public static float SAW_DIST_THRES = 20.0f;
+    public static float LOST_DIST_THRES = 10.0f;
+    public static float ATTACK_DIST_THRES = 2.0f;
+
     protected Dictionary<ZombieTransition, ZombieFSMStateID> map = new Dictionary<ZombieTransition, ZombieFSMStateID>();
     public ZombieFSMStateID stateID;
     public ZombieFSMStateID ID {get {return stateID;} }
@@ -92,10 +96,6 @@ public abstract class ZombieFSMState {
             health = 0;
         }
     }
-
-//    public void Die() {
-//        dead = true;
-//    }
 
     public abstract void Reason(Transform target, Transform human, Transform npc);
     public abstract void Act(Transform target, Transform human, Transform npc);
