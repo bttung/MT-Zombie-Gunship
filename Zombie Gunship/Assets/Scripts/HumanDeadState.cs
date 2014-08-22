@@ -19,7 +19,7 @@ public class HumanDeadState : HumanFSMState {
         }
 
         // Make the NPC explode then destroy it
-        Debug.Log ("U wanna die Human...");
+        Debug.Log ("U Human wanna die ...");
         npc.GetComponent<HumanController> ().Explode ();
     }
 }
