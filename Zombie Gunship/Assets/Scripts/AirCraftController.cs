@@ -95,12 +95,13 @@ public class AirCraftController : MonoBehaviour {
 
     private void HandleAccelometer() {
         curAcc = Vector3.Lerp (curAcc, Input.acceleration - zeroAcc, Time.deltaTime / smooth);
-        axisVertical = Mathf.Clamp (curAcc.y * sensorVertical, -1, 1);
+        axisVertical = Mathf.Clamp(curAcc.y * sensorVertical, -1, 1);
         axisHorizon = Mathf.Clamp(curAcc.x * sensorHorizon, -1, 1);
 
-        rigidbody.AddRelativeTorque(Vector3.up * axisHorizon * rollConstant);
-        rigidbody.AddRelativeTorque(Vector3.left * axisVertical * pitchConstant);
+
+        rigidbody.AddRelativeTorque(Vector3.up * axisHorizon/* * rollConstant*/);
+        rigidbody.AddRelativeTorque(Vector3.left * axisVertical/* * pitchConstant*/);
         
-        Stabilize();
+        //Stabilize();
     }
 }

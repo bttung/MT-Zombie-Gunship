@@ -1,13 +1,14 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AirCraftController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Detonator Explosion Framework/TestScene/DetonatorTest.js">
     <Files>
       <File FileName="Assets/Scripts/AirCraftController.cs" Line="57" Column="30" />
       <File FileName="Assets/Scripts/HumanFSMState.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ZombieFSMState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ZombieSpawner.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/ZombieSpawner.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/bak/PlaneController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/BulletController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Detonator Explosion Framework/TestScene/DetonatorTest.js" Line="102" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
