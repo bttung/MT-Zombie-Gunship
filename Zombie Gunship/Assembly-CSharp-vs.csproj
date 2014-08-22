@@ -53,7 +53,9 @@
      <Compile Include="Assets\Scripts\HumanFSMSystem.cs" />
      <Compile Include="Assets\Scripts\HumanFleeState.cs" />
      <Compile Include="Assets\Scripts\HumanShelterState.cs" />
+     <Compile Include="Assets\Scripts\HumanSpawner.cs" />
      <Compile Include="Assets\Scripts\MissileController.cs" />
+     <Compile Include="Assets\Scripts\Parameters.cs" />
      <Compile Include="Assets\Scripts\PathPlan.cs" />
      <Compile Include="Assets\Scripts\PlaneController.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
@@ -66,6 +68,7 @@
      <Compile Include="Assets\Scripts\ZombieFSMState.cs" />
      <Compile Include="Assets\Scripts\ZombieFSMSystem.cs" />
      <Compile Include="Assets\Scripts\ZombiePatrolState.cs" />
+     <Compile Include="Assets\Scripts\ZombieSpawner.cs" />
      <Compile Include="Assets\Scripts\ZombieWinState.cs" />
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>

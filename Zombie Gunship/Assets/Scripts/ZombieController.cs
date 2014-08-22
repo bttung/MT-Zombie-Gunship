@@ -6,7 +6,8 @@ using System.Text;
 [RequireComponent(typeof(Rigidbody))]
 public class ZombieController : MonoBehaviour {
 
-    public GameObject shelter;
+    private GameObject shelter;
+    public GameObject[] humanList;
     public GameObject human;
     public NavMeshAgent agent;
     private ZombieFSMSystem fsm;
@@ -21,17 +22,38 @@ public class ZombieController : MonoBehaviour {
     public void Start() {
         ConstructFSM ();
         agent = gameObject.GetComponent<NavMeshAgent> ();
+        shelter = GameObject.FindGameObjectWithTag ("Shelter");
     }
 
     public void FixedUpdate() {
+        FindApproriateHuman();
+
         if (human == null) {
-            Debug.Log("Game Over");
+            Debug.Log("Zombie win the game");
             return;
         }
 
         fsm.CurrentState.Reason (shelter.transform, human.transform, gameObject.transform);
         fsm.CurrentState.Act (shelter.transform, human.transform, gameObject.transform);
     }
+
+    void FindHuman() {
+        humanList = GameObject.FindGameObjectsWithTag ("Human");
+    }
+
+    void FindApproriateHuman() {
+        FindHuman ();
+        float min = 100000f;
+        float dist;
+        for (int i = 0; i < humanList.Length; i++) {
+            dist = Vector3.Distance(gameObject.transform.position, humanList[i].transform.position);
+            if (dist < min) {
+                min = dist;
+                human = humanList[i];
+            }
+        }
+    }
+
 
     // The NPC has 4 states: Patrol, Chasing, Attack, Dead
     private void ConstructFSM() {
