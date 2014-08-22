@@ -3,64 +3,61 @@ using System.Collections;
 
 [RequireComponent (typeof(Rigidbody))]
 public class AirCraftController : MonoBehaviour {
-    
+
+    public float speed = 100f;
+    public float speedLimit = 800f;
+    public float rollConstant = 5f;
+    public float pitchConstant = 5f;
+    public float normalAngularDrag = 2f;
+    public float emergAngularDrag = 10f;
+    public float angSpeedLimitSqr = 10f;
+    public float normalDrag = 1f;
+    public float emergencyDrag = 5f;
+    private bool getControl;
+    private float elapedTime;
+    private float delayTime;
+    // Acceleration
+    private Vector3 zeroAcc;
+    private Vector3 curAcc;
+    private float sensorHorizon = 10f;
+    private float sensorVertical = 10f;
+    private float smooth = 0.5f;
+    private float axisHorizon = 0;
+    private float axisVertical = 0;
+
     // Use this for initialization
     void Start () {
-//        cursor = new CrosshairCursor(cursorImage, rigidbody);
-        
         rigidbody.drag = normalDrag;
         rigidbody.angularDrag = normalAngularDrag;
-        // Screen.showCursor = false;
-//        Screen.lockCursor = true;
+        elapedTime = 0;
+        getControl = false;
+        delayTime = 1.0f;
+        ResetAccelometer ();
     }
-    
-    // Called when GUI elements are drawn
-    void OnGUI() {
-//        cursor.OnGUI();
-//        dealWithSystemCursor();
-        handleMouse();
+
+    void ResetAccelometer() {
+        zeroAcc = Input.acceleration;
+        curAcc = Vector3.zero;
     }
-    
-    //  
-//    private void dealWithSystemCursor() {
-//    }
-    
-    // Update is called once per frame
-    void update() {
-    }
-    
+
     // Update is called once per frame
     void FixedUpdate () {
-        handleThrust();
-        handleMouse();
+        if (!getControl) {
+            elapedTime += Time.deltaTime;
+            if (elapedTime < delayTime) {
+                return;
+            } else {
+                getControl = true;
+                return;
+            }
+        }
+
+        ApplySpeedLimits();
+//        HandleMouse();
+        HandleAccelometer ();
     }
     
-    private void handleThrust() {
-        updateKeys();
-        
-        applySpeedLimits();
-        
-        Vector3 thrust = Vector3.zero;
-        if (W) {
-            thrust += (Vector3.forward * speed * Time.deltaTime);
-        }
-        if (S) {
-            thrust += (Vector3.back * speed * Time.deltaTime);
-        }
-        if (A) {
-            thrust += (Vector3.left * speed * Time.deltaTime);
-        }
-        if (D) {
-            thrust += (Vector3.right * speed * Time.deltaTime);
-        }
-        
-        rigidbody.AddRelativeForce(thrust);
-        
-        
-        
-    }
-    
-    private void applySpeedLimits() {
+    private void ApplySpeedLimits() {
         // Apply speed limit
         if (rigidbody.velocity.sqrMagnitude > speedLimit) {
             rigidbody.drag = emergencyDrag;
@@ -78,7 +75,7 @@ public class AirCraftController : MonoBehaviour {
         }
     }
     
-    private void stabilize() {
+    private void Stabilize() {
         
         Vector3 torqueVector = Vector3.Cross(rigidbody.transform.up, Vector3.up);
         torqueVector = Vector3.Project(torqueVector, transform.forward);
@@ -86,49 +83,24 @@ public class AirCraftController : MonoBehaviour {
         rigidbody.AddTorque(torqueVector * Time.deltaTime * 150);
     }
     
-    private void handleMouse() {    
+    private void HandleMouse() {    
         float roll = Input.GetAxis("Mouse X");
         float pitch = Input.GetAxis("Mouse Y");
-        
+
         rigidbody.AddRelativeTorque(Vector3.up * roll * rollConstant);
         rigidbody.AddRelativeTorque(Vector3.left * pitch * pitchConstant);
         
-        if (Q) {
-            rigidbody.AddRelativeTorque(Vector3.forward * 500 * Time.deltaTime);
-        }
-        if (E) {
-            rigidbody.AddRelativeTorque(Vector3.back * 500 * Time.deltaTime);
-        }
-        
-        stabilize();
+        Stabilize();
     }
-    
-    private void updateKeys() {
-        A = Input.GetKey(KeyCode.A);
-        W = Input.GetKey(KeyCode.W);
-        S = Input.GetKey(KeyCode.S);
-        D = Input.GetKey(KeyCode.D);
-        Q = Input.GetKey(KeyCode.Q);
-        E = Input.GetKey(KeyCode.E);
+
+    private void HandleAccelometer() {
+        curAcc = Vector3.Lerp (curAcc, Input.acceleration - zeroAcc, Time.deltaTime / smooth);
+        axisVertical = Mathf.Clamp (curAcc.y * sensorVertical, -1, 1);
+        axisHorizon = Mathf.Clamp(curAcc.x * sensorHorizon, -1, 1);
+
+        rigidbody.AddRelativeTorque(Vector3.up * axisHorizon * rollConstant);
+        rigidbody.AddRelativeTorque(Vector3.left * axisVertical * pitchConstant);
         
-        if (Input.GetKey(KeyCode.Escape)) Application.Quit();
+        Stabilize();
     }
-    
-    public float speed = 10000f;
-    public float speedLimit = 80000f;
-    public float rollConstant = 100f;
-    public float pitchConstant = 100f;
-    public float normalAngularDrag = 2f;
-    public float emergAngularDrag = 10f;
-    public float angSpeedLimitSqr = 10f;
-    bool A = false;
-    bool W = false;
-    bool S = false;
-    bool D = false;
-    bool Q = false;
-    bool E = false;
-    public float normalDrag = 1f;
-    public float emergencyDrag = 5f;
-//    private CrosshairCursor cursor;
-//    public Texture2D cursorImage;
 }

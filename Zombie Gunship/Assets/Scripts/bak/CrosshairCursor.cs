@@ -2,6 +2,19 @@ using UnityEngine;
 using System.Collections;
 
 public class CrosshairCursor {
+
+    private Texture2D crosshairTex;
+    public Texture2D cursorImage;
+    private Rigidbody shipBody;
+    public Vector3 cursorVector;
+    public Vector3 relativecVec;
+    public static CrosshairCursor current;
+    public Vector3 cameraLocation;
+
+    void Start() {
+        crosshairTex = createCrossHair(Color.green);
+    }
+
 	public CrosshairCursor(Texture2D image, Rigidbody shipBody) {
 		this.cursorImage = image;	
 		this.shipBody = shipBody;
@@ -9,8 +22,11 @@ public class CrosshairCursor {
 	
 	public void OnGUI() {
 		// Crosshair
-//		Rect crossPos = center(Camera.main.ViewportToScreenPoint(new Vector3(.5f, .5f, 0)), crosshairTex);
-//		GUI.Label(crossPos, crosshairTex);
+		if (crosshairTex == null) {
+            return;
+        }
+        Rect crossPos = center(Camera.main.ViewportToScreenPoint(new Vector3(.5f, .5f, 0)), crosshairTex);
+		GUI.Label(crossPos, crosshairTex);
 	}
 	
 	/**
@@ -45,12 +61,4 @@ public class CrosshairCursor {
 		tex.Apply();
 		return tex;
 	}
-	
-	private Texture2D crosshairTex = createCrossHair(Color.green);
-	private Rigidbody shipBody;
-	public Vector3 cursorVector;
-	public Vector3 relativecVec;
-	public static CrosshairCursor current;
-	public Vector3 cameraLocation;
-	public Texture2D cursorImage;
 }
