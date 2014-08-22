@@ -7,11 +7,11 @@ public class HumanShelterState : HumanFSMState {
         stateID = HumanFSMStateID.Sheltering;
     }
 
-    public override void Reason (GameObject npc) {
+    public override void Reason (Transform target, Transform npc) {
         // You are safe here, no enemy can attack you
     }
 
-    public override void Act(GameObject npc) {
+    public override void Act(Transform target, Transform npc) {
         // You are safe here, no enemy can attack you
     }
 }

@@ -7,11 +7,11 @@ public class HumanDeadState : HumanFSMState {
         stateID = HumanFSMStateID.Dead;
     }
 
-    public override void Reason(GameObject npc) {
+    public override void Reason(Transform target, Transform npc) {
         // You Died!
     }
 
-    public override void Act(GameObject npc) {
+    public override void Act(Transform target, Transform npc) {
         // Died
         if (!dead) {
             dead = true;

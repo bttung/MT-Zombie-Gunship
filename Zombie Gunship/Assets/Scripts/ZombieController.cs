@@ -8,10 +8,7 @@ public class ZombieController : MonoBehaviour {
 
     public GameObject shelter;
     public GameObject human;
-//    public GameObject target;
     public NavMeshAgent agent;
-
-    public Transform[] path;
     private ZombieFSMSystem fsm;
 
     //    // Bullet
@@ -38,7 +35,7 @@ public class ZombieController : MonoBehaviour {
 
     // The NPC has 4 states: Patrol, Chasing, Attack, Dead
     private void ConstructFSM() {
-        ZombiePatrolState patrol = new ZombiePatrolState (path);
+        ZombiePatrolState patrol = new ZombiePatrolState ();
         patrol.AddTransition (ZombieTransition.SawHuman, ZombieFSMStateID.Chasing);
         patrol.AddTransition (ZombieTransition.NoHealth, ZombieFSMStateID.Dead);
         patrol.AddTransition (ZombieTransition.ReachShelter, ZombieFSMStateID.Win);

@@ -4,10 +4,8 @@ using System.Collections;
 public class ZombiePatrolState : ZombieFSMState {
 
     private int currentWayPoint;
-    private Transform[] wayPoints;
 
-    public ZombiePatrolState(Transform[] wp) {
-        wayPoints = wp;
+    public ZombiePatrolState() {
         currentWayPoint = 0;
         stateID = ZombieFSMStateID.Patrolling;
     }

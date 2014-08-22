@@ -83,7 +83,7 @@ public abstract class HumanFSMState {
         }
     }
     
-    public abstract void Reason(GameObject npc);
-    public abstract void Act(GameObject npc);
+    public abstract void Reason(Transform target, Transform npc);
+    public abstract void Act(Transform target, Transform npc);
 
 }

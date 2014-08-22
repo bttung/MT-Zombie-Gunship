@@ -3,23 +3,26 @@ using System.Collections;
 
 public class HumanController : MonoBehaviour {
 
-    public Transform[] path;
+    public GameObject shelter;
+    public NavMeshAgent agent;
     private HumanFSMSystem fsm;
 
     public void SetTransition(HumanTransition trans) {fsm.PerformTransition(trans);}
 
     public void Start() {
         ConstructFSM ();
+        agent = gameObject.GetComponent<NavMeshAgent> ();
     }
+
     
     public void FixedUpdate() {
-        fsm.CurrentState.Reason (gameObject);
-        fsm.CurrentState.Act (gameObject);
+        fsm.CurrentState.Reason (shelter.transform, gameObject.transform);
+        fsm.CurrentState.Act (shelter.transform, gameObject.transform);
     }
     
     // The NPC has 4 states: Patrol, Chasing, Attack, Dead
     private void ConstructFSM() {
-        HumanFleeState flee = new HumanFleeState (path);
+        HumanFleeState flee = new HumanFleeState ();
         flee.AddTransition (HumanTransition.ReachShelter, HumanFSMStateID.Sheltering);
         flee.AddTransition (HumanTransition.NoHealth, HumanFSMStateID.Dead);
         
@@ -48,12 +51,11 @@ public class HumanController : MonoBehaviour {
 
 
     public void TakeDamage(int damage) {
-//        if (fsm.CurrentStateID == HumanFSMStateID.Dead) {
-//            return;
-//        }
-//
-        fsm.CurrentState.TakeDamage (damage);
+        if (fsm.CurrentStateID == HumanFSMStateID.Dead) {
+            return;
+        }
 
+        fsm.CurrentState.TakeDamage (damage);
     }
 
     void OnTriggerEnter(Collider other) {
