@@ -14,28 +14,16 @@ public class WeaponController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void OnGUI () {
+//	void OnGUI () {
+//        GUI.DrawTexture (new Rect (Screen.width - shootBtn.width - 10, Screen.height - shootBtn.height - 10, shootBtn.width, shootBtn.height), shootBtn);
+//	}
 
-//        if (Input.GetMouseButtonDown (0)) {
-//            // Bullet shoot
-//        } else if (Input.GetMouseButtonUp (0)) {
-//            // Bullet stop
-//        }
-//
-//        if (Input.GetMouseButtonDown (1)) {
-//            // Canon shoot
-//        } else if (Input.GetMouseButtonUp (1)) {
-//            // Canon stop
-//        }
-//
-//        if (Input.GetMouseButtonDown (2)) {
-//            // Missile shoot
-//        } else if (Input.GetMouseButtonUp (2)) {
-//            // Missile stop
-//        }
+    void Update() {
+        if (Input.touchCount == 2) {
+            Touch touch0 =  Input.GetTouch(0);
+            Touch touch1 = Input.GetTouch(1);
 
-        if (GUI.Button (new Rect (shootBtn.width / 2 + 10, Screen.height - shootBtn.height - 10, shootBtn.width, shootBtn.height), shootBtn)) {
-            if (Input.touchCount == 2) {
+            if (touch0.phase == TouchPhase.Stationary && touch1.phase == TouchPhase.Began) {
                 // Generate a plane that intersects the transform's position with an upwards normal.
                 Plane playerPlane = new Plane (Vector3.up, transform.position);
                 // Ray raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -50,5 +38,5 @@ public class WeaponController : MonoBehaviour {
                 }
             }
         }
-	}
+    }
 }
