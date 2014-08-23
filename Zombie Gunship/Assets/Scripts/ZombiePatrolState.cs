@@ -14,14 +14,14 @@ public class ZombiePatrolState : ZombieFSMState {
         // Check the distance with human, When distance is near, transition to the chase state
         float dist = Vector3.Distance (npc.transform.position, human.transform.position);
         if (dist <= SAW_DIST_THRES) {
-            Debug.Log ("Patrol ---> Chase State");
-            Debug.Log("Dist " + dist);
+//            Debug.Log ("Patrol ---> Chase State");
+//            Debug.Log("Dist " + dist);
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.SawHuman);
         }
 
         // Check whether the zombie alive
         if (dead) {
-            Debug.Log ("Zombie Wanna Die");
+//            Debug.Log ("Zombie Wanna Die");
             npc.GetComponent<ZombieController>().SetTransition(ZombieTransition.NoHealth);
         }
     }

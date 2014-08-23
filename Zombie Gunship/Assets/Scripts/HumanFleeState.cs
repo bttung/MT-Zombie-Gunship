@@ -10,7 +10,7 @@ public class HumanFleeState : HumanFSMState {
     public override void Reason(Transform target, Transform npc) {
         // Check whether the zombie alive
         if (dead) {
-            Debug.Log ("Human Wanna Die");
+//            Debug.Log ("Human Wanna Die");
             npc.GetComponent<HumanController>().SetTransition(HumanTransition.NoHealth);
         }
     }

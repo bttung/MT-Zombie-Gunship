@@ -1,14 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AirCraftController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Character Controllers/Sources/Scripts/CharacterMotor.js">
     <Files>
-      <File FileName="Assets/Scripts/AirCraftController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AirCraftController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/HumanFSMState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ZombieFSMState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ZombieSpawner.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/bak/PlaneController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/BulletController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AirCraftController.cs" Line="118" Column="54" />
+      <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/CharacterMotor.js" Line="315" Column="37" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

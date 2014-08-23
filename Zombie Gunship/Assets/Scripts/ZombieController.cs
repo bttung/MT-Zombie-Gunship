@@ -29,7 +29,7 @@ public class ZombieController : MonoBehaviour {
         FindApproriateHuman();
 
         if (human == null) {
-            Debug.Log("Zombie win the game");
+//            Debug.Log("Zombie win the game");
             return;
         }
 
@@ -101,7 +101,7 @@ public class ZombieController : MonoBehaviour {
             return;
         }
 
-        Debug.Log ("Attack human");
+//        Debug.Log ("Attack human");
 
         // Attack Human
         // Start the Attack Coroutine ...
@@ -115,10 +115,10 @@ public class ZombieController : MonoBehaviour {
         }
         
         if (collision.gameObject.tag == "Bullet") {
-            Debug.Log ("Hit with Bullet");
+//            Debug.Log ("Hit with Bullet");
             fsm.CurrentState.TakeDamage(30);
         } else if (collision.gameObject.tag == "Missile") {
-            Debug.Log("Hit with Missile");
+//            Debug.Log("Hit with Missile");
             fsm.CurrentState.TakeDamage(50);
         }
     }
