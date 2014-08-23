@@ -70,7 +70,6 @@
      <Compile Include="Assets\Scripts\HumanSpawner.cs" />
      <Compile Include="Assets\Scripts\MissileController.cs" />
      <Compile Include="Assets\Scripts\Parameters.cs" />
-     <Compile Include="Assets\Scripts\PathPlan.cs" />
      <Compile Include="Assets\Scripts\StatusDisplay.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
      <Compile Include="Assets\Scripts\WeaponGun.cs" />

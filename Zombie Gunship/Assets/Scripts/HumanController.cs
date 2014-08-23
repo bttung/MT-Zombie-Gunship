@@ -3,9 +3,10 @@ using System.Collections;
 
 public class HumanController : MonoBehaviour {
 
+    private HumanFSMSystem fsm;
     public NavMeshAgent agent;
     private GameObject shelter;
-    private HumanFSMSystem fsm;
+    private GameObject display;
 
     public void SetTransition(HumanTransition trans) {fsm.PerformTransition(trans);}
 
@@ -13,6 +14,7 @@ public class HumanController : MonoBehaviour {
         ConstructFSM ();
         agent = gameObject.GetComponent<NavMeshAgent> ();
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
+        display = GameObject.FindGameObjectWithTag ("Display");
     }
 
     
@@ -62,6 +64,7 @@ public class HumanController : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Shelter") {
             SetTransition(HumanTransition.ReachShelter);
+            display.GetComponent<StatusDisplay>().IncreaseHumanSaved();
         }
     }
 }

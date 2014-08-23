@@ -12,11 +12,6 @@ public class WeaponController : MonoBehaviour {
     void Start () {
         detonator = gameObject.GetComponent<Detonator> ();
 	}
-	
-	// Update is called once per frame
-//	void OnGUI () {
-//        GUI.DrawTexture (new Rect (Screen.width - shootBtn.width - 10, Screen.height - shootBtn.height - 10, shootBtn.width, shootBtn.height), shootBtn);
-//	}
 
     void Update() {
         if (Input.touchCount == 2) {
