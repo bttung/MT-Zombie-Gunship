@@ -4,8 +4,8 @@ using System.Collections;
 [RequireComponent (typeof(Rigidbody))]
 public class AirCraftController : MonoBehaviour {
 
-    public float speed = 6000f;
-    public float speedLimit = 80000f;
+    public float speed = 10000f;
+    public float speedLimit = 30000f;
     public float normalAngularDrag = 2f;
     public float emergAngularDrag = 10f;
     public float angSpeedLimitSqr = 10f;
@@ -52,7 +52,7 @@ public class AirCraftController : MonoBehaviour {
         ApplySpeedLimits();
 
 //        HandleMouse();
-//        HandleSwipe ();
+        HandleSwipe ();
         HandleAccelometer ();
     }
     
@@ -115,7 +115,7 @@ public class AirCraftController : MonoBehaviour {
         Vector3 torque = Vector3.zero;
         torque += new Vector3 (handler.x * 10f, 0, 0);
         torque += new Vector3(0, handler.y * 10f, 0);
-        torque += new Vector3(0, 0, handler.z * 10f);
+        torque += new Vector3(0, 0, handler.z * 10f);   
 
         rigidbody.AddRelativeTorque (torque);
 

@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Character Controllers/Sources/Scripts/CharacterMotor.js">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WeaponController.cs">
     <Files>
-      <File FileName="Assets/Scripts/AirCraftController.cs" Line="118" Column="54" />
-      <File FileName="Assets/Standard Assets/Character Controllers/Sources/Scripts/CharacterMotor.js" Line="315" Column="37" />
+      <File FileName="Assets/Scripts/AirCraftController.cs" Line="54" Column="5" />
+      <File FileName="Assets/Scripts/WeaponController.cs" Line="60" Column="3" />
+      <File FileName="Assets/Scripts/Explode.cs" Line="5" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
