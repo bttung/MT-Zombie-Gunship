@@ -38,6 +38,7 @@ public class AirCraftController : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
+
         // Wait a second for user to see the scene
         if (!getControl) {
             elapedTime += Time.deltaTime;
