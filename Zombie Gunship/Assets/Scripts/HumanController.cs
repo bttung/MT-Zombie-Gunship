@@ -9,7 +9,7 @@ public class HumanController : MonoBehaviour {
     private Detonator detonator;
     public GameObject particle;
     private GameManager gameManager;
-    private bool dead;
+    private int count;
 
     public void SetTransition(HumanTransition trans) {fsm.PerformTransition(trans);}
 
@@ -19,7 +19,7 @@ public class HumanController : MonoBehaviour {
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
         gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
         detonator = gameObject.GetComponent<Detonator> ();
-        dead = false;
+        count = 0;
     }
 
     
@@ -47,22 +47,24 @@ public class HumanController : MonoBehaviour {
     }
     
     public void Explode() {
-        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
+//        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
+//            return;
+//        }
+
+        if (count > 0) {
             return;
         }
 
-        if (!dead) {
-// Dont know why detonator dont work on the device    
-//            detonator.gameObject.transform.position = gameObject.transform.position;
-//            detonator.Explode ();
+        // Dont know why detonator dont work on the device    
+        //            detonator.gameObject.transform.position = gameObject.transform.position;
+        //            detonator.Explode ();
 
-            // Explode Effect by particle
-            Instantiate(particle, gameObject.transform.position, Quaternion.identity);
+        // Explode Effect by particle
+        Instantiate(particle, gameObject.transform.position, Quaternion.identity);
 
-            Destroy (gameObject, 1.0f);
-            gameManager.IncreaseHumanDead ();
-            dead = true;
-        }
+        Destroy (gameObject, 1.0f);
+        gameManager.IncreaseHumanDead ();
+        count++;
     }
 
 

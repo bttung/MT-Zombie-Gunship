@@ -14,7 +14,7 @@ public class ZombieController : MonoBehaviour {
     private GameManager gameManager;
     private Detonator detonator;
     public GameObject particle;
-    private bool dead;
+    private int count;
 
     //    // Bullet
     //    public GameObject bullet;
@@ -29,7 +29,7 @@ public class ZombieController : MonoBehaviour {
         detonator = gameObject.GetComponent<Detonator> ();
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
         gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
-        dead = false;
+        count = 0;
     }
 
     public void FixedUpdate() {
@@ -96,19 +96,20 @@ public class ZombieController : MonoBehaviour {
 //            return;
 //        }
 
-        if (!dead) {
-
-// Dont know why detonator dont work on the device
-//            detonator.gameObject.transform.position = gameObject.transform.position;
-//            detonator.Explod e ();
-
-            // Explode Effect by particle
-            Instantiate(particle, gameObject.transform.position, Quaternion.identity);
-            Destroy (gameObject, 1.0f);
-
-            gameManager.IncreasedZombieKilled ();
-            dead = true;
+        if (count > 0) {
+            return;
         }
+
+        // Dont know why detonator dont work on the device
+        //            detonator.gameObject.transform.position = gameObject.transform.position;
+        //            detonator.Explod e ();
+
+        // Explode Effect by particle
+        Instantiate(particle, gameObject.transform.position, Quaternion.identity);
+        Destroy (gameObject, 1.0f);
+
+        gameManager.IncreasedZombieKilled ();
+        count++;
     }
 
     public void Attack() {
