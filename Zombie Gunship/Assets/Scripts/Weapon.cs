@@ -4,7 +4,7 @@ using System.Collections;
 public class Weapon : MonoBehaviour {
 
     private float speed = 100.0f;
-    private float lifeTime =  2.5f;
+    private float lifeTime =  3.0f;
     private int damage = 100;
     private float radius = 15;
     public float loadTime = 0.0f;
@@ -18,8 +18,7 @@ public class Weapon : MonoBehaviour {
 
     protected void Init() {
         Destroy (gameObject, lifeTime);
-        detonator = gameObject.GetComponent<Detonator> ();  
-        //        display = GameObject.FindGameObjectWithTag ("Display");  
+        detonator = gameObject.GetComponent<Detonator> ();
 
 
         //  Because the camera is to high, the raycast generate some error in the y axiz, we need to replenish that error
