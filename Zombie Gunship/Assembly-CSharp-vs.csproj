@@ -70,6 +70,8 @@
      <Compile Include="Assets\Scripts\HumanFleeState.cs" />
      <Compile Include="Assets\Scripts\HumanShelterState.cs" />
      <Compile Include="Assets\Scripts\HumanSpawner.cs" />
+     <Compile Include="Assets\Scripts\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\Missile.cs" />
      <Compile Include="Assets\Scripts\MissileController.cs" />
      <Compile Include="Assets\Scripts\Parameters.cs" />
      <Compile Include="Assets\Scripts\Weapon.cs" />

@@ -6,8 +6,8 @@ public class Weapon : MonoBehaviour {
     private float speed = 100.0f;
     private float lifeTime =  3.0f;
     private int damage = 100;
-    private float radius = 15;
-    public float loadTime =  1.5f;
+    private float radius = 12;
+    public float loadTime =  1.0f;
 
     Detonator detonator;
     

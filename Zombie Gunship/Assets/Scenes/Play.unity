@@ -2405,6 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
+  particle: {fileID: 100000, guid: 27c29cbb28a1a41478d8b409e3fd65a0, type: 2}
 --- !u!195 &1087080528
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3282,6 +3283,14 @@ Prefab:
       propertyPath: canonBtn
       value: 
       objectReference: {fileID: 2800000, guid: 97d1f16c021a645c486884e683969066, type: 3}
+    - target: {fileID: 11400002, guid: 9dd11017aff7c491399ea6d47688ba81, type: 2}
+      propertyPath: missileBtn
+      value: 
+      objectReference: {fileID: 2800000, guid: 1568e45f2a5cb4e54909610f04df7292, type: 3}
+    - target: {fileID: 11400002, guid: 9dd11017aff7c491399ea6d47688ba81, type: 2}
+      propertyPath: missile
+      value: 
+      objectReference: {fileID: 100000, guid: 662cad55c5f0c444c962d35693ffcdd7, type: 2}
     m_RemovedComponents:
     - {fileID: 11400000, guid: 9dd11017aff7c491399ea6d47688ba81, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9dd11017aff7c491399ea6d47688ba81, type: 2}
@@ -3491,9 +3500,10 @@ MonoBehaviour:
   weapon: {fileID: 100000, guid: 3c4ac588c5687480bb88267917f976d0, type: 2}
   bullet: {fileID: 100000, guid: 94b5a2b4ed5fe49379b3202cbf4cfe5f, type: 2}
   canon: {fileID: 100000, guid: 578f63bae10444e9cb0b8cbac5effd32, type: 2}
-  missile: {fileID: 0}
+  missile: {fileID: 100000, guid: 662cad55c5f0c444c962d35693ffcdd7, type: 2}
   bulletBtn: {fileID: 2800000, guid: 8c671f28e8f1a419dbc99e11b754e7c8, type: 3}
   canonBtn: {fileID: 2800000, guid: 97d1f16c021a645c486884e683969066, type: 3}
+  missileBtn: {fileID: 2800000, guid: 1568e45f2a5cb4e54909610f04df7292, type: 3}
 --- !u!4 &1491261533
 Transform:
   m_ObjectHideFlags: 0

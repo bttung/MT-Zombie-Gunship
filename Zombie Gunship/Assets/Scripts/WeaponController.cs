@@ -15,9 +15,10 @@ public class WeaponController : MonoBehaviour {
     public GameObject weapon;
     public GameObject bullet;
     public GameObject canon;
-    public WeaponMissile missile;
+    public GameObject missile;
     public Texture2D bulletBtn;
     public Texture2D canonBtn;
+    public Texture2D missileBtn;
 
 
     // Use this for initialization
@@ -76,29 +77,36 @@ public class WeaponController : MonoBehaviour {
         } else if (type == 2) {
             weapon = canon;
             reloadTime = canon.gameObject.GetComponent<Canon> ().loadTime;
+        } else if (type == 3) {
+            weapon = missile;
+            reloadTime = canon.gameObject.GetComponent<Missile> ().loadTime;
         }
     }
 
     void OnGUI() {
-        if (weaponType == 2) {
-            DrawTexture (bulletBtn);
-        } else if (weaponType == 1) {
-            DrawTexture(canonBtn);
-        }
+        if (weaponType == 1) {
+            DrawTexture (canonBtn);
+        } else if (weaponType == 2) {
+            DrawTexture(missileBtn);
+        } else if (weaponType == 3) {
+            DrawTexture(bulletBtn);
+        } 
     }
 
 
     public void DrawTexture(Texture2D texture) {
         float scale = 0.5f;
-        Rect rect = new Rect (texture.width * scale / 2 + 5, texture.height * scale / 2 + 5, texture.width * scale, texture.height * scale);
+        Rect rect = new Rect (texture.width / 2 + 5, texture.height / 2 + 5, texture.width, texture.height);
         GUI.DrawTexture (rect, texture);
         
         if (GUI.Button (rect, "", new GUIStyle ())) {
             if (weaponType == 1) {
                 weaponType = 2;
             } else if (weaponType == 2) {
+                weaponType = 3;
+            } else if (weaponType == 3) {
                 weaponType = 1;
-            } 
+            }  
         }
     }
 }
