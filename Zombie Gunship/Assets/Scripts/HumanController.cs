@@ -46,14 +46,14 @@ public class HumanController : MonoBehaviour {
     }
     
     public void Explode() {
-//        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
-//            return;
-//        }
+        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
+            return;
+        }
 
-        detonator.gameObject.transform.position = gameObject.transform.position;
-        detonator.Explode ();
-        Destroy (gameObject, 1.0f);
         if (!dead) {
+            detonator.gameObject.transform.position = gameObject.transform.position;
+            detonator.Explode ();
+            Destroy (gameObject, 1.0f);
             gameManager.IncreaseHumanDead ();
             dead = true;
         }

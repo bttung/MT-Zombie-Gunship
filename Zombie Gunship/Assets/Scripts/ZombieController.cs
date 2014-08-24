@@ -95,11 +95,11 @@ public class ZombieController : MonoBehaviour {
 //            return;
 //        }
 
-        detonator.gameObject.transform.position = gameObject.transform.position;
-        detonator.Explode ();
-        Destroy (gameObject, 1.0f);
-
         if (!dead) {
+            detonator.gameObject.transform.position = gameObject.transform.position;
+            detonator.Explode ();
+            Destroy (gameObject, 1.0f);
+
             gameManager.IncreasedZombieKilled ();
             dead = true;
         }

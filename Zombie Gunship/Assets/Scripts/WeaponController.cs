@@ -28,6 +28,7 @@ public class WeaponController : MonoBehaviour {
         reloadTime = weapon.gameObject.GetComponent<Weapon> ().loadTime;
         elapsedShootTime = 0;
         weaponType = 1;
+        SetWeaponType (1);
     }
 
     void Update() {
@@ -61,41 +62,43 @@ public class WeaponController : MonoBehaviour {
 
                 // Instantiate the Weapon here
                 Instantiate(bullet, targetPoint, Quaternion.identity);
+//                Instantiate(weapon, targetPoint, Quaternion.identity);
                 elapsedShootTime = 0;
             }
             explodePrepare = false;
         }
     }
 
-//    public void SetWeaponType(int type) {
-//        if (type == 1) {
-//            weapon = bullet;
-//            reloadTime = bullet.gameObject.GetComponent<Bullet> ().loadTime;
-//        } else if (type == 2) {
-//            weapon = canon;
-//            reloadTime = canon.gameObject.GetComponent<Canon> ().loadTime;
-//        }
-//    }
+    public void SetWeaponType(int type) {
+        if (type == 1) {
+            weapon = bullet;
+            reloadTime = bullet.gameObject.GetComponent<Bullet> ().loadTime;
+        } else if (type == 2) {
+            weapon = canon;
+            reloadTime = canon.gameObject.GetComponent<Canon> ().loadTime;
+        }
+    }
 
 //    void OnGUI() {
-//        if (weaponType == 1) {
+//        if (weaponType == 2) {
 //            DrawTexture (bulletBtn);
-//        } else if (weaponType == 2) {
+//        } else if (weaponType == 1) {
 //            DrawTexture(canonBtn);
 //        }
 //    }
 
 
-    public void DrawTexture(Texture2D texture) {
-        Rect rect = new Rect (Screen.width - texture.width / 2 - 10, texture.height / 2 + 10, texture.width, texture.height);
-        GUI.DrawTexture (rect, texture);
-        
-        if (GUI.Button (rect, "", new GUIStyle ())) {
-            if (weaponType == 1) {
-                weaponType = 2;
-            } else if (weaponType == 2) {
-                weaponType = 1;
-            } 
-        }
-    }
+//    public void DrawTexture(Texture2D texture) {
+//        float scale = 0.5f;
+//        Rect rect = new Rect (texture.width * scale / 2 + 5, texture.height * scale / 2 + 5, texture.width * scale, texture.height * scale);
+//        GUI.DrawTexture (rect, texture);
+//        
+//        if (GUI.Button (rect, "", new GUIStyle ())) {
+//            if (weaponType == 1) {
+//                weaponType = 2;
+//            } else if (weaponType == 2) {
+//                weaponType = 1;
+//            } 
+//        }
+//    }
 }

@@ -29,15 +29,15 @@ public class GameManager : MonoBehaviour {
     }
 
     void OnGUI() {
-//        if (zombieInShelter > 0 || humanDied >= 10) {
-//            DrawTexture(lose);
-//            return;
-//        }
-//
-//        if (zombieKilled > 15) {
-//            DrawTexture(win);
-//            return;
-//        }
+        if (zombieInShelter > 0 || humanDied >= 10) {
+            DrawTexture(lose);
+            return;
+        }
+
+        if (zombieKilled > 15) {
+            DrawTexture(win);
+            return;
+        }
     }
 
     void RefreshText() {
@@ -64,12 +64,12 @@ public class GameManager : MonoBehaviour {
         refreshResult = true;
     }
 
-//    public void DrawTexture(Texture2D texture) {
-//        Rect rect = new Rect (Screen.width / 2 - texture.width / 2, Screen.height / 2 - texture.height / 2, texture.width, texture.height);
-//        GUI.DrawTexture (rect, texture);
-//        
-//        if (GUI.Button (rect, "", new GUIStyle ())) {
-//            Application.LoadLevel("Level");
-//        }
-//    }
+    public void DrawTexture(Texture2D texture) {
+        Rect rect = new Rect (Screen.width / 2 - texture.width / 2, Screen.height / 2 - texture.height / 2, texture.width, texture.height);
+        GUI.DrawTexture (rect, texture);
+        
+        if (GUI.Button (rect, "", new GUIStyle ())) {
+            Application.LoadLevel("Welcome");
+        }
+    }
 }

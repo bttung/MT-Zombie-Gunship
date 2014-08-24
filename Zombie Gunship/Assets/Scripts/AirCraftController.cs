@@ -113,11 +113,11 @@ public class AirCraftController : MonoBehaviour {
             speedTouch1 = Input.GetTouch(1).deltaPosition.magnitude / Input.GetTouch(1).deltaTime;
 
             if ((touchDelta + variancesDist <= 1) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed)) {                
-                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView + (1 * cameraZoomSpeed), 15, 90);
+                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView + (1 * cameraZoomSpeed), 7, 90);
             }
             
             if ((touchDelta +variancesDist > 1) && (speedTouch0 > minPinchSpeed) && (speedTouch1 > minPinchSpeed)) {
-                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - (1 * cameraZoomSpeed), 15, 90);
+                Camera.main.fieldOfView = Mathf.Clamp(Camera.main.fieldOfView - (1 * cameraZoomSpeed), 7, 90);
             }
         }
     }
