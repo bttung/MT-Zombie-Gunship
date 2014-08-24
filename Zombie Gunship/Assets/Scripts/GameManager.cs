@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void OnGUI() {
-        if (zombieInShelter > 0 || humanDied >= 10) {
+        if (zombieInShelter > 0 || humanDied >= 3) {
             DrawTexture(lose);
             return;
         }
