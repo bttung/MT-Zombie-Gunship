@@ -26,6 +26,10 @@ public class StatusDisplay : MonoBehaviour {
         human.text = humanSaved +  "Human In Shelter";
     }
 
+    public void RefreshMessage(string message) {
+        human.text = message;
+    }
+
     void RefreshZombieText() {
         zombie.text = zombieInShelter +  "Zombie In Shelter";
     }

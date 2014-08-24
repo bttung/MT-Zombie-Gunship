@@ -102,6 +102,15 @@ public class ZombieController : MonoBehaviour {
         // Start the Attack Coroutine ...
         human.GetComponent<HumanController> ().TakeDamage (100);
     }
+
+    
+    public void TakeDamage(int damage) {
+        if (fsm.CurrentStateID == ZombieFSMStateID.Dead) {
+            return;
+        }
+        
+        fsm.CurrentState.TakeDamage (damage);
+    }
     
     // Taking Damage when Hit with Missile or Bullet.
     void OnCollisionEnter(Collision collision) {

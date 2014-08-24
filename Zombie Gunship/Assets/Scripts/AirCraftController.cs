@@ -65,7 +65,7 @@ public class AirCraftController : MonoBehaviour {
 //        HandleMouse();
         HandleSwipe ();
         HandleZoom ();
-        HandleAccelometer ();
+//        HandleAccelometer ();
     }
     
     private void ApplySpeedLimits() {
