@@ -40,14 +40,14 @@ public class StatusDisplay : MonoBehaviour {
 
     public void IncreaseHumanSaved() {
         humanSaved++;
-        Debug.Log ("human: " + humanSaved);
+//        Debug.Log ("human: " + humanSaved);
 //        RefreshHumanText ();
         RefreshText ();
     }
 
     public void IncreaseZombieInShelter() {
         zombieInShelter++;
-        Debug.Log ("zombie " + zombieInShelter);
+//        Debug.Log ("zombie " + zombieInShelter);
 //        RefreshZombieText ();
         RefreshText ();
     }
