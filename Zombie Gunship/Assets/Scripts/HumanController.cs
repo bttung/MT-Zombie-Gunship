@@ -47,10 +47,6 @@ public class HumanController : MonoBehaviour {
     }
     
     public void Explode() {
-//        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
-//            return;
-//        }
-
         if (count > 0) {
             return;
         }

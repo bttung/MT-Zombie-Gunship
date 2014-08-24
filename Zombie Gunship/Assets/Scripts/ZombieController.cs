@@ -16,11 +16,6 @@ public class ZombieController : MonoBehaviour {
     public GameObject particle;
     private int count;
 
-    //    // Bullet
-    //    public GameObject bullet;
-    //    protected float shootRate;
-    //    protected float elapsedTime;
-
     public void SetTransition(ZombieTransition trans) {fsm.PerformTransition(trans);}
 
     public void Start() {
@@ -92,9 +87,6 @@ public class ZombieController : MonoBehaviour {
     }
 
     public void Explode() {
-//        if (fsm.CurrentStateID == ZombieFSMStateID.Dead) {
-//            return;
-//        }
 
         if (count > 0) {
             return;
@@ -118,8 +110,6 @@ public class ZombieController : MonoBehaviour {
             return;
         }
 
-//        Debug.Log ("Attack human");
-
         // Attack Human
         // Start the Attack Coroutine ...
         human.GetComponent<HumanController> ().TakeDamage (100);
@@ -132,21 +122,6 @@ public class ZombieController : MonoBehaviour {
         }
         
         fsm.CurrentState.TakeDamage (damage);
-    }
-    
-    // Taking Damage when Hit with Missile or Bullet.
-    void OnCollisionEnter(Collision collision) {
-        if (fsm.CurrentStateID == ZombieFSMStateID.Dead) {
-            return;
-        }
-        
-        if (collision.gameObject.tag == "Bullet") {
-//            Debug.Log ("Hit with Bullet");
-            fsm.CurrentState.TakeDamage(30);
-        } else if (collision.gameObject.tag == "Missile") {
-//            Debug.Log("Hit with Missile");
-            fsm.CurrentState.TakeDamage(50);
-        }
     }
 
     void OnTriggerEnter(Collider other) {
