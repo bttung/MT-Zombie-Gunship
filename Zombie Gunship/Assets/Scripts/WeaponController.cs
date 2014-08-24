@@ -39,10 +39,10 @@ public class WeaponController : MonoBehaviour {
         }
 
         if (explodePrepare) {
-
             if (playerPlane.Raycast (raycast, out hitDist)) {
                 // Get the point along the ray that hits the calculated distance.
-                targetPoint = raycast.GetPoint(hitDist);
+                targetPoint = raycast.GetPoint(hitDist);               
+
                 // Instantiate the Weapon here
                 Instantiate(bullet, targetPoint, Quaternion.identity);
             }

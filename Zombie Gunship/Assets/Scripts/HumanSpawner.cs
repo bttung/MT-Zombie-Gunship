@@ -21,7 +21,7 @@ public class HumanSpawner : MonoBehaviour {
             x = x * Parameters.GRID_SIZE + Parameters.GRID_SIZE * 0.5f;
             z = z * Parameters.GRID_SIZE + Parameters.GRID_SIZE * 0.5f;
 
-            Vector3 pos = new Vector3(x, 0 , z);
+            Vector3 pos = new Vector3(x, 1.5f , z);
 
             Instantiate(human, pos, transform.rotation);
             respawnTimer = 0.0f;
