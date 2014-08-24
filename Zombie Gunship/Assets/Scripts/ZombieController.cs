@@ -101,7 +101,7 @@ public class ZombieController : MonoBehaviour {
 
     public void Attack() {
         // Check if human died
-        if (human == null) {
+        if (human == null || human.gameObject.GetComponent<HumanController>().IsDead()) {
             return;
         }
 

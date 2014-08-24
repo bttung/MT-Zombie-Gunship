@@ -79,4 +79,12 @@ public class HumanController : MonoBehaviour {
             gameManager.IncreaseHumanSaved();
         }
     }
+
+    public bool IsDead() {
+        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

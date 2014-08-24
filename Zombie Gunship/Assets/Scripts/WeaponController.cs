@@ -77,13 +77,13 @@ public class WeaponController : MonoBehaviour {
 //        }
 //    }
 
-    void OnGUI() {
-        if (weaponType == 1) {
-            DrawTexture (bulletBtn);
-        } else if (weaponType == 2) {
-            DrawTexture(canonBtn);
-        }
-    }
+//    void OnGUI() {
+//        if (weaponType == 1) {
+//            DrawTexture (bulletBtn);
+//        } else if (weaponType == 2) {
+//            DrawTexture(canonBtn);
+//        }
+//    }
 
 
     public void DrawTexture(Texture2D texture) {

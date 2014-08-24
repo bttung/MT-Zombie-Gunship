@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour {
     }
     
     protected void Init() {
-//        Destroy (gameObject, lifeTime);
+        Destroy (gameObject, lifeTime);
         detonator = gameObject.GetComponent<Detonator> ();  
         //        display = GameObject.FindGameObjectWithTag ("Display");  
         
@@ -31,8 +31,10 @@ public class Bullet : MonoBehaviour {
         
         if (tagName == "Zombie") {
             other.gameObject.GetComponent<ZombieController>().TakeDamage(damage);
+            gameObject.collider.enabled = false;
         } else if (tagName == "Human") {
             other.gameObject.GetComponent<HumanController>().TakeDamage(damage);
+            gameObject.collider.enabled = false;
         }
 
         Debug.Log ("Collided");
