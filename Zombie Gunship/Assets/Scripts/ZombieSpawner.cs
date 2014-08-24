@@ -4,12 +4,12 @@ using System.Collections;
 public class ZombieSpawner : MonoBehaviour {
 
     public GameObject zombie;
-    private float delayTime = 2.0f;
+    private float delayTime = 1.0f;
     private float respawnTimer;
     
     // Use this for initialization
     void Start () {
-        respawnTimer = 2.0f;
+        respawnTimer = 0.0f;
     }
     
     // Update is called once per frame

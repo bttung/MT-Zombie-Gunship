@@ -13,14 +13,24 @@ public class WeaponController : MonoBehaviour {
     float hitDist;
     public GameObject bullet;
 
+    private float elapsedShootTime;
+    public float coolingTime;
+
     // Use this for initialization
     void Start () {
         playerPlane = new Plane (Vector3.up, transform.position);
         explodePrepare = false;
         hitDist = 0;
+        elapsedShootTime = 0;
+        coolingTime = 2.0f;
     }
 
     void Update() {
+
+        elapsedShootTime += Time.deltaTime;
+        if (elapsedShootTime < coolingTime) {
+            return;
+        }
 
         if (Input.touchCount == 2) {
             Touch touch0 =  Input.GetTouch(0);
@@ -33,10 +43,11 @@ public class WeaponController : MonoBehaviour {
             }
         }
 
-        if (Input.GetMouseButtonDown (0)) {
-            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
-            explodePrepare = true;
-        }
+        // This one is for PC
+//        if (Input.GetMouseButtonDown (0)) {
+//            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
+//            explodePrepare = true;
+//        }
 
         if (explodePrepare) {
             if (playerPlane.Raycast (raycast, out hitDist)) {
@@ -45,6 +56,7 @@ public class WeaponController : MonoBehaviour {
 
                 // Instantiate the Weapon here
                 Instantiate(bullet, targetPoint, Quaternion.identity);
+                elapsedShootTime = 0;
             }
             explodePrepare = false;
         }
