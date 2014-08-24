@@ -11,7 +11,6 @@ public class AirCraftController : MonoBehaviour {
     public float angSpeedLimitSqr = 10f;
     public float normalDrag = 1f;
     public float emergencyDrag = 5f;
-    private bool getControl;
     private float elapedTime;
     private float delayTime;
 
@@ -36,7 +35,6 @@ public class AirCraftController : MonoBehaviour {
         rigidbody.drag = normalDrag;
         rigidbody.angularDrag = normalAngularDrag;
         elapedTime = 0;
-        getControl = false;
         delayTime = 1.0f;
         ResetAccelometer ();
     }
@@ -48,24 +46,23 @@ public class AirCraftController : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate () {
-
-        // Wait a second for user to see the scene
-        if (!getControl) {
-            elapedTime += Time.deltaTime;
-            if (elapedTime < delayTime) {
-                return;
-            } else {
-                getControl = true;
-                return;
-            }
-        }
-
         ApplySpeedLimits();
 
-//        HandleMouse();
+//      HandleMouse();
         HandleSwipe ();
         HandleZoom ();
-//        HandleAccelometer ();
+    }
+
+    void Update() {
+        // This one is for rotate the camera by Accelometer
+        elapedTime += Time.deltaTime;
+        if (elapedTime < 10.0f) {
+        
+        } else {
+//            SmartPhone cannot afford this process
+//            HandleAccelometer ();
+            elapedTime = 0;
+        }
     }
     
     private void ApplySpeedLimits() {
@@ -147,9 +144,9 @@ public class AirCraftController : MonoBehaviour {
         handler.z = Mathf.Clamp(curAcc.z * 10f, -1, 1);
 
         Vector3 torque = Vector3.zero;
-        torque += new Vector3 (handler.x * 10f, 0, 0);
-        torque += new Vector3(0, handler.y * 10f, 0);
-        torque += new Vector3(0, 0, handler.z * 10f);   
+        torque += new Vector3 (handler.x * 3, 0, 0);
+        torque += new Vector3(0, handler.y * 3, 0);
+        torque += new Vector3(0, 0, handler.z * 3);   
 
         rigidbody.AddRelativeTorque (torque);
 

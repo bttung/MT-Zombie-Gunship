@@ -11,7 +11,8 @@ public class ZombieController : MonoBehaviour {
     public GameObject human;
     public NavMeshAgent agent;
     private ZombieFSMSystem fsm;
-    private GameObject display;
+    private GameManager gameManager;
+    private Detonator detonator;
 
     //    // Bullet
     //    public GameObject bullet;
@@ -23,8 +24,9 @@ public class ZombieController : MonoBehaviour {
     public void Start() {
         ConstructFSM ();
         agent = gameObject.GetComponent<NavMeshAgent> ();
+        detonator = gameObject.GetComponent<Detonator> ();
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
-        display = GameObject.FindGameObjectWithTag ("Display");
+        gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
     }
 
     public void FixedUpdate() {
@@ -87,7 +89,14 @@ public class ZombieController : MonoBehaviour {
     }
 
     public void Explode() {
-        Destroy (gameObject, 1.5f);
+//        if (fsm.CurrentStateID == ZombieFSMStateID.Dead) {
+//            return;
+//        }
+
+        detonator.gameObject.transform.position = gameObject.transform.position;
+        detonator.Explode ();
+        Destroy (gameObject, 1.0f);
+        gameManager.IncreasedZombieKilled ();
     }
 
     public void Attack() {
@@ -130,7 +139,7 @@ public class ZombieController : MonoBehaviour {
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Shelter") {
             SetTransition(ZombieTransition.ReachShelter);
-            display.GetComponent<StatusDisplay>().IncreaseZombieInShelter();
+            gameManager.IncreaseZombieInShelter();
         }
     }
 

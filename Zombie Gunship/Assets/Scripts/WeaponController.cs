@@ -3,32 +3,37 @@ using System.Collections;
 
 public class WeaponController : MonoBehaviour {
 
-    public Texture2D shootBtn;
-	public WeaponGun gun;
-	public WeaponMissile missile;
-    Vector3 targetPoint;
     Ray raycast;
+    float hitDist;
+    Vector3 targetPoint;
     Plane playerPlane;
     bool explodePrepare;
-    float hitDist;
-    public GameObject bullet;
-
     private float elapsedShootTime;
-    public float coolingTime;
+    private float reloadTime;
+
+    private int weaponType;
+    public GameObject weapon;
+    public GameObject bullet;
+    public GameObject canon;
+    public WeaponMissile missile;
+    public Texture2D bulletBtn;
+    public Texture2D canonBtn;
+
 
     // Use this for initialization
     void Start () {
         playerPlane = new Plane (Vector3.up, transform.position);
         explodePrepare = false;
         hitDist = 0;
+        reloadTime = weapon.gameObject.GetComponent<Weapon> ().loadTime;
         elapsedShootTime = 0;
-        coolingTime = 2.0f;
+        weaponType = 1;
     }
 
     void Update() {
 
         elapsedShootTime += Time.deltaTime;
-        if (elapsedShootTime < coolingTime) {
+        if (elapsedShootTime < reloadTime) {
             return;
         }
 
@@ -44,10 +49,10 @@ public class WeaponController : MonoBehaviour {
         }
 
         // This one is for PC
-//        if (Input.GetMouseButtonDown (0)) {
-//            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
-//            explodePrepare = true;
-//        }
+        if (Input.GetMouseButtonDown (0)) {
+            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
+            explodePrepare = true;
+        }
 
         if (explodePrepare) {
             if (playerPlane.Raycast (raycast, out hitDist)) {
@@ -59,6 +64,38 @@ public class WeaponController : MonoBehaviour {
                 elapsedShootTime = 0;
             }
             explodePrepare = false;
+        }
+    }
+
+//    public void SetWeaponType(int type) {
+//        if (type == 1) {
+//            weapon = bullet;
+//            reloadTime = bullet.gameObject.GetComponent<Bullet> ().loadTime;
+//        } else if (type == 2) {
+//            weapon = canon;
+//            reloadTime = canon.gameObject.GetComponent<Canon> ().loadTime;
+//        }
+//    }
+
+    void OnGUI() {
+        if (weaponType == 1) {
+            DrawTexture (bulletBtn);
+        } else if (weaponType == 2) {
+            DrawTexture(canonBtn);
+        }
+    }
+
+
+    public void DrawTexture(Texture2D texture) {
+        Rect rect = new Rect (Screen.width - texture.width / 2 - 10, texture.height / 2 + 10, texture.width, texture.height);
+        GUI.DrawTexture (rect, texture);
+        
+        if (GUI.Button (rect, "", new GUIStyle ())) {
+            if (weaponType == 1) {
+                weaponType = 2;
+            } else if (weaponType == 2) {
+                weaponType = 1;
+            } 
         }
     }
 }

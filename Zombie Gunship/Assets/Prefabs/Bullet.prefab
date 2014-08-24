@@ -70,10 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2266322e5b1c46bcb3a2041e7f659fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleHit: {fileID: 0}
-  speed: 100
-  lifeTime: 3
-  damage: 100
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,13 +81,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 10
+  size: 5
   color: {r: 1, g: .423000008, b: 0, a: .5}
   explodeOnStart: 0
   duration: 3
   detail: 1
   upwardsBias: 0
-  destroyTime: 7
+  destroyTime: 5
   useWorldSpace: 1
   direction: {x: 0, y: 0, z: 0}
   fireballAMaterial: {fileID: 0}
@@ -120,7 +116,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 100
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:

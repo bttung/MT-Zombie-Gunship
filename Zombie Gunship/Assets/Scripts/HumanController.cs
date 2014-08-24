@@ -6,8 +6,8 @@ public class HumanController : MonoBehaviour {
     private HumanFSMSystem fsm;
     public NavMeshAgent agent;
     private GameObject shelter;
-    private GameObject display;
     private Detonator detonator;
+    private GameManager gameManager;
 
     public void SetTransition(HumanTransition trans) {fsm.PerformTransition(trans);}
 
@@ -15,7 +15,7 @@ public class HumanController : MonoBehaviour {
         ConstructFSM ();
         agent = gameObject.GetComponent<NavMeshAgent> ();
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
-        display = GameObject.FindGameObjectWithTag ("Display");
+        gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
         detonator = gameObject.GetComponent<Detonator> ();
     }
 
@@ -44,9 +44,14 @@ public class HumanController : MonoBehaviour {
     }
     
     public void Explode() {
+//        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
+//            return;
+//        }
+
         detonator.gameObject.transform.position = gameObject.transform.position;
         detonator.Explode ();
-        Destroy (gameObject, 1.5f);
+        Destroy (gameObject, 1.0f);
+        gameManager.IncreaseHumanDead ();
     }
 
 
@@ -71,7 +76,7 @@ public class HumanController : MonoBehaviour {
             }
 
             SetTransition(HumanTransition.ReachShelter);
-            display.GetComponent<StatusDisplay>().IncreaseHumanSaved();
+            gameManager.IncreaseHumanSaved();
         }
     }
 }

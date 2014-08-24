@@ -61,7 +61,8 @@
      <Compile Include="Assets\Detonator Explosion Framework\System\DetonatorSpray.cs" />
      <Compile Include="Assets\Scripts\AirCraftController.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
-     <Compile Include="Assets\Scripts\BulletController.cs" />
+     <Compile Include="Assets\Scripts\Canon.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\HumanController.cs" />
      <Compile Include="Assets\Scripts\HumanDeadState.cs" />
      <Compile Include="Assets\Scripts\HumanFSMState.cs" />
@@ -71,10 +72,11 @@
      <Compile Include="Assets\Scripts\HumanSpawner.cs" />
      <Compile Include="Assets\Scripts\MissileController.cs" />
      <Compile Include="Assets\Scripts\Parameters.cs" />
-     <Compile Include="Assets\Scripts\StatusDisplay.cs" />
+     <Compile Include="Assets\Scripts\Weapon.cs" />
      <Compile Include="Assets\Scripts\WeaponController.cs" />
      <Compile Include="Assets\Scripts\WeaponGun.cs" />
      <Compile Include="Assets\Scripts\WeaponMissile.cs" />
+     <Compile Include="Assets\Scripts\Welcome.cs" />
      <Compile Include="Assets\Scripts\ZombieAttackState.cs" />
      <Compile Include="Assets\Scripts\ZombieChaseState.cs" />
      <Compile Include="Assets\Scripts\ZombieController.cs" />
