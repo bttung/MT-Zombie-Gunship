@@ -50,10 +50,10 @@ public class WeaponController : MonoBehaviour {
         }
 
         // This one is for PC
-        if (Input.GetMouseButtonDown (0)) {
-            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
-            explodePrepare = true;
-        }
+//        if (Input.GetMouseButtonDown (0)) {
+//            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
+//            explodePrepare = true;
+//        }
 
         if (explodePrepare) {
             if (playerPlane.Raycast (raycast, out hitDist)) {
@@ -79,26 +79,26 @@ public class WeaponController : MonoBehaviour {
         }
     }
 
-//    void OnGUI() {
-//        if (weaponType == 2) {
-//            DrawTexture (bulletBtn);
-//        } else if (weaponType == 1) {
-//            DrawTexture(canonBtn);
-//        }
-//    }
+    void OnGUI() {
+        if (weaponType == 2) {
+            DrawTexture (bulletBtn);
+        } else if (weaponType == 1) {
+            DrawTexture(canonBtn);
+        }
+    }
 
 
-//    public void DrawTexture(Texture2D texture) {
-//        float scale = 0.5f;
-//        Rect rect = new Rect (texture.width * scale / 2 + 5, texture.height * scale / 2 + 5, texture.width * scale, texture.height * scale);
-//        GUI.DrawTexture (rect, texture);
-//        
-//        if (GUI.Button (rect, "", new GUIStyle ())) {
-//            if (weaponType == 1) {
-//                weaponType = 2;
-//            } else if (weaponType == 2) {
-//                weaponType = 1;
-//            } 
-//        }
-//    }
+    public void DrawTexture(Texture2D texture) {
+        float scale = 0.5f;
+        Rect rect = new Rect (texture.width * scale / 2 + 5, texture.height * scale / 2 + 5, texture.width * scale, texture.height * scale);
+        GUI.DrawTexture (rect, texture);
+        
+        if (GUI.Button (rect, "", new GUIStyle ())) {
+            if (weaponType == 1) {
+                weaponType = 2;
+            } else if (weaponType == 2) {
+                weaponType = 1;
+            } 
+        }
+    }
 }

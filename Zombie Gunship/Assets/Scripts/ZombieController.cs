@@ -13,6 +13,7 @@ public class ZombieController : MonoBehaviour {
     private ZombieFSMSystem fsm;
     private GameManager gameManager;
     private Detonator detonator;
+    public GameObject particle;
     private bool dead;
 
     //    // Bullet
@@ -96,8 +97,13 @@ public class ZombieController : MonoBehaviour {
 //        }
 
         if (!dead) {
-            detonator.gameObject.transform.position = gameObject.transform.position;
-            detonator.Explode ();
+
+// Dont know why detonator dont work on the device
+//            detonator.gameObject.transform.position = gameObject.transform.position;
+//            detonator.Explod e ();
+
+            // Explode Effect by particle
+            Instantiate(particle, gameObject.transform.position, Quaternion.identity);
             Destroy (gameObject, 1.0f);
 
             gameManager.IncreasedZombieKilled ();

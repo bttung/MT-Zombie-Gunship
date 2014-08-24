@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
             return;
         }
 
-        if (zombieKilled > 15) {
+        if (zombieKilled > 100) {
             DrawTexture(win);
             return;
         }

@@ -7,6 +7,7 @@ public class HumanController : MonoBehaviour {
     public NavMeshAgent agent;
     private GameObject shelter;
     private Detonator detonator;
+    public GameObject particle;
     private GameManager gameManager;
     private bool dead;
 
@@ -51,8 +52,13 @@ public class HumanController : MonoBehaviour {
         }
 
         if (!dead) {
-            detonator.gameObject.transform.position = gameObject.transform.position;
-            detonator.Explode ();
+// Dont know why detonator dont work on the device    
+//            detonator.gameObject.transform.position = gameObject.transform.position;
+//            detonator.Explode ();
+
+            // Explode Effect by particle
+            Instantiate(particle, gameObject.transform.position, Quaternion.identity);
+
             Destroy (gameObject, 1.0f);
             gameManager.IncreaseHumanDead ();
             dead = true;
