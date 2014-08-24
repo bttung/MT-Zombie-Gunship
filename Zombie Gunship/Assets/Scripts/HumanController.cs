@@ -7,6 +7,7 @@ public class HumanController : MonoBehaviour {
     public NavMeshAgent agent;
     private GameObject shelter;
     private GameObject display;
+    private Detonator detonator;
 
     public void SetTransition(HumanTransition trans) {fsm.PerformTransition(trans);}
 
@@ -15,6 +16,7 @@ public class HumanController : MonoBehaviour {
         agent = gameObject.GetComponent<NavMeshAgent> ();
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
         display = GameObject.FindGameObjectWithTag ("Display");
+        detonator = gameObject.GetComponent<Detonator> ();
     }
 
     
@@ -42,13 +44,8 @@ public class HumanController : MonoBehaviour {
     }
     
     public void Explode() {
-//        float rndX = Random.Range (10.0f, 30.0f);
-//        float rndZ = Random.Range (10.0f, 30.0f);
-//        for (int i = 0; i < 3; i++) {
-//            rigidbody.AddExplosionForce(10000.0f, transform.position - new Vector3(rndX, 10.0f, rndZ), 40.0f, 10.0f);
-//            rigidbody.velocity = transform.TransformDirection(new Vector3(rndX, 20.0f, rndZ));
-//        }
-        
+        detonator.gameObject.transform.position = gameObject.transform.position;
+        detonator.Explode ();
         Destroy (gameObject, 1.5f);
     }
 
@@ -62,7 +59,17 @@ public class HumanController : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
+        // if Human deak, they die immediately, so they cannot enter the shelter
+        if (fsm.CurrentState.ID == HumanFSMStateID.Dead) {
+            return;
+        }
+
         if (other.gameObject.tag == "Shelter") {
+            if (fsm.CurrentState.ID == HumanFSMStateID.Sheltering) {
+                // Human will not runout of the Shelter, so turn off the box Collider
+                gameObject.collider.enabled = false;
+            }
+
             SetTransition(HumanTransition.ReachShelter);
             display.GetComponent<StatusDisplay>().IncreaseHumanSaved();
         }

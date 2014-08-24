@@ -271,6 +271,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1349417571}
   m_RootOrder: 0
+--- !u!21 &153507780
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FireballA-Default
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 60e1d0a96221932478bd7120d0e366c9, type: 3}
+          m_Scale: {x: .5, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &154422702
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,6 +447,22 @@ Prefab:
     - target: {fileID: 100002, guid: a50e48c822ffe4872be976a8b4699bf4, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: a50e48c822ffe4872be976a8b4699bf4, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: a50e48c822ffe4872be976a8b4699bf4, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: a50e48c822ffe4872be976a8b4699bf4, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: a50e48c822ffe4872be976a8b4699bf4, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00999999978
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a50e48c822ffe4872be976a8b4699bf4, type: 2}
@@ -931,6 +977,36 @@ Prefab:
   m_RootGameObject: {fileID: 315862992}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!21 &429186389
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Glow-Default
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 1e151393df889e545a0c0e295799dd39, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &432827755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,6 +1149,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!21 &454171856
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SmokeA-Default
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 2a6221eb1b1c50a4cb69a62e2f264e58, type: 3}
+          m_Scale: {x: .5, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &477132452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,6 +1474,36 @@ Transform:
   - {fileID: 1796062267}
   m_Father: {fileID: 1408440207}
   m_RootOrder: 1
+--- !u!21 &609424250
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SmokeB-Default
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 2a6221eb1b1c50a4cb69a62e2f264e58, type: 3}
+          m_Scale: {x: .5, y: 1}
+          m_Offset: {x: .5, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &662098912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1784,6 +1920,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2048364279}
   m_RootOrder: 6
+--- !u!21 &906545253
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sparks-Default
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: c2557bac1251fb84aa9cfb8484770b19, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &954913621
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,7 +2399,7 @@ Transform:
   m_GameObject: {fileID: 1008198379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: .100000001, z: 40}
+  m_LocalScale: {x: 40, y: .00999999978, z: 40}
   m_Children: []
   m_Father: {fileID: 1668749815}
   m_RootOrder: 0
@@ -2349,6 +2515,7 @@ GameObject:
   - 195: {fileID: 1087080528}
   - 114: {fileID: 1087080527}
   - 65: {fileID: 1087080530}
+  - 114: {fileID: 1087080531}
   m_Layer: 0
   m_Name: Human
   m_TagString: Human
@@ -2433,6 +2600,43 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1087080531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: cbc4ad79244a840fb80a2250f00c2ef7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1987213225}
+  m_GameObject: {fileID: 1087080525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b4007f1233a9b74fa9be42583fafba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 1
+  color: {r: .79411763, g: .245242208, b: .245242208, a: .501960814}
+  explodeOnStart: 0
+  duration: 1
+  detail: 1
+  upwardsBias: 0
+  destroyTime: 1
+  useWorldSpace: 1
+  direction: {x: 0, y: 0, z: 0}
+  fireballAMaterial: {fileID: 153507780}
+  fireballBMaterial: {fileID: 1797895223}
+  smokeAMaterial: {fileID: 454171856}
+  smokeBMaterial: {fileID: 609424250}
+  shockwaveMaterial: {fileID: 1873914773}
+  sparksMaterial: {fileID: 906545253}
+  glowMaterial: {fileID: 429186389}
+  heatwaveMaterial: {fileID: 0}
+  autoCreateFireball: 1
+  autoCreateSparks: 1
+  autoCreateShockwave: 1
+  autoCreateSmoke: 1
+  autoCreateGlow: 1
+  autoCreateLight: 1
+  autoCreateForce: 1
+  autoCreateHeatwave: 0
 --- !u!1 &1087950709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2799,7 +3003,7 @@ Transform:
   m_GameObject: {fileID: 1319971612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -40, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: .100000001, z: 100}
+  m_LocalScale: {x: 20, y: .00999999978, z: 100}
   m_Children: []
   m_Father: {fileID: 662098914}
   m_RootOrder: 2
@@ -3598,7 +3802,7 @@ Transform:
   m_GameObject: {fileID: 1630440450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 40}
-  m_LocalScale: {x: 100, y: .100000001, z: 20}
+  m_LocalScale: {x: 100, y: .00999999978, z: 20}
   m_Children: []
   m_Father: {fileID: 662098914}
   m_RootOrder: 0
@@ -3917,6 +4121,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 4f358c85a24ab42f5850a076481aa97d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .00999999978
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f358c85a24ab42f5850a076481aa97d, type: 2}
   m_RootGameObject: {fileID: 1668749814}
@@ -3976,6 +4184,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 565948352}
   m_RootOrder: 1
+--- !u!21 &1797895223
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: FireballB-Default
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 60e1d0a96221932478bd7120d0e366c9, type: 3}
+          m_Scale: {x: .5, y: 1}
+          m_Offset: {x: .5, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1801284489
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,7 +4296,7 @@ Transform:
   m_GameObject: {fileID: 1816618482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 40, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: .100000001, z: 100}
+  m_LocalScale: {x: 20, y: .00999999978, z: 100}
   m_Children: []
   m_Father: {fileID: 662098914}
   m_RootOrder: 1
@@ -4276,6 +4514,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2048364279}
   m_RootOrder: 2
+--- !u!21 &1873914773
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Shockwave-Default
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: b7460a00d2f78cc48a5f7acbafe163e8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _InvFade
+        second: 1
+    m_Colors:
+      data:
+        first:
+          name: _TintColor
+        second: {r: .100000001, g: .100000001, b: .100000001, a: 1}
 --- !u!1 &1878902735
 GameObject:
   m_ObjectHideFlags: 0
@@ -4658,7 +4926,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: cbc4ad79244a840fb80a2250f00c2ef7, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbc4ad79244a840fb80a2250f00c2ef7, type: 2}
@@ -4860,7 +5128,7 @@ Transform:
   m_GameObject: {fileID: 2106501912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -40}
-  m_LocalScale: {x: 100, y: .100000001, z: 20}
+  m_LocalScale: {x: 100, y: .00999999978, z: 20}
   m_Children: []
   m_Father: {fileID: 662098914}
   m_RootOrder: 3

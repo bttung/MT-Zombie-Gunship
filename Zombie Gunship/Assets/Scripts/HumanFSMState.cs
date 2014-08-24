@@ -19,7 +19,7 @@ public enum HumanFSMStateID {
 public abstract class HumanFSMState {
 
     protected Dictionary<HumanTransition, HumanFSMStateID> map = new Dictionary<HumanTransition, HumanFSMStateID> ();
-    public HumanFSMStateID stateID;
+    protected HumanFSMStateID stateID;
     public HumanFSMStateID ID {get {return stateID;} }
 
     // whether Human died or not

@@ -28,7 +28,7 @@ public abstract class ZombieFSMState {
     public static float ATTACK_DIST_THRES = 2.0f;
 
     protected Dictionary<ZombieTransition, ZombieFSMStateID> map = new Dictionary<ZombieTransition, ZombieFSMStateID>();
-    public ZombieFSMStateID stateID;
+    protected ZombieFSMStateID stateID;
     public ZombieFSMStateID ID {get {return stateID;} }
 
     // whether the Zombie is destroyed or not
