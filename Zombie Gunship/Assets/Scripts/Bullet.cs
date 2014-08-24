@@ -16,7 +16,8 @@ public class Bullet : MonoBehaviour {
         Destroy (gameObject, lifeTime);
         display = GameObject.FindGameObjectWithTag ("Display");
         detonator = gameObject.GetComponent<Detonator> ();
-
+        detonator.Explode ();
+        Debug.Log ("Bullet Exploded");
         if (detonator == null) {
             Debug.LogError("Bullet not found Detonator");
         }

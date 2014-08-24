@@ -6,16 +6,15 @@ public class WeaponController : MonoBehaviour {
     public Texture2D shootBtn;
 	public WeaponGun gun;
 	public WeaponMissile missile;
-    Detonator detonator;
     Vector3 targetPoint;
     Ray raycast;
     Plane playerPlane;
     bool explodePrepare;
     float hitDist;
+    public GameObject bullet;
 
     // Use this for initialization
     void Start () {
-        detonator = gameObject.GetComponent<Detonator> ();
         playerPlane = new Plane (Vector3.up, transform.position);
         explodePrepare = false;
         hitDist = 0;
@@ -40,12 +39,12 @@ public class WeaponController : MonoBehaviour {
         }
 
         if (explodePrepare) {
-            Debug.Log ("Fire now");
+
             if (playerPlane.Raycast (raycast, out hitDist)) {
                 // Get the point along the ray that hits the calculated distance.
                 targetPoint = raycast.GetPoint(hitDist);
-                detonator.gameObject.transform.position = targetPoint;
-                detonator.Explode ();
+                // Instantiate the Weapon here
+                Instantiate(bullet, targetPoint, Quaternion.identity);
             }
             explodePrepare = false;
         }
