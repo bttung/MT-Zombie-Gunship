@@ -50,10 +50,10 @@ public class WeaponController : MonoBehaviour {
         }
 
         // This one is for PC
-        if (Input.GetMouseButtonDown (0)) {
-            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
-            explodePrepare = true;
-        }
+//        if (Input.GetMouseButtonDown (0)) {
+//            raycast = Camera.main.ScreenPointToRay (Input.mousePosition);
+//            explodePrepare = true;
+//        }
 
         if (explodePrepare) {
             if (playerPlane.Raycast (raycast, out hitDist)) {
