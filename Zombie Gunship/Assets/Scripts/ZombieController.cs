@@ -13,6 +13,7 @@ public class ZombieController : MonoBehaviour {
     private ZombieFSMSystem fsm;
     private GameManager gameManager;
     private Detonator detonator;
+    private bool dead;
 
     //    // Bullet
     //    public GameObject bullet;
@@ -27,6 +28,7 @@ public class ZombieController : MonoBehaviour {
         detonator = gameObject.GetComponent<Detonator> ();
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
         gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
+        dead = false;
     }
 
     public void FixedUpdate() {
@@ -96,7 +98,11 @@ public class ZombieController : MonoBehaviour {
         detonator.gameObject.transform.position = gameObject.transform.position;
         detonator.Explode ();
         Destroy (gameObject, 1.0f);
-        gameManager.IncreasedZombieKilled ();
+
+        if (!dead) {
+            gameManager.IncreasedZombieKilled ();
+            dead = true;
+        }
     }
 
     public void Attack() {

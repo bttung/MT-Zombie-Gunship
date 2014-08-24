@@ -8,6 +8,7 @@ public class HumanController : MonoBehaviour {
     private GameObject shelter;
     private Detonator detonator;
     private GameManager gameManager;
+    private bool dead;
 
     public void SetTransition(HumanTransition trans) {fsm.PerformTransition(trans);}
 
@@ -17,6 +18,7 @@ public class HumanController : MonoBehaviour {
         shelter = GameObject.FindGameObjectWithTag ("Shelter");
         gameManager = GameObject.FindGameObjectWithTag ("GameManager").GetComponent<GameManager>();
         detonator = gameObject.GetComponent<Detonator> ();
+        dead = false;
     }
 
     
@@ -51,7 +53,10 @@ public class HumanController : MonoBehaviour {
         detonator.gameObject.transform.position = gameObject.transform.position;
         detonator.Explode ();
         Destroy (gameObject, 1.0f);
-        gameManager.IncreaseHumanDead ();
+        if (!dead) {
+            gameManager.IncreaseHumanDead ();
+            dead = true;
+        }
     }
 
 
