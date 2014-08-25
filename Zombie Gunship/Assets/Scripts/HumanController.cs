@@ -52,11 +52,11 @@ public class HumanController : MonoBehaviour {
         }
 
         // Dont know why detonator dont work on the device    
-        //            detonator.gameObject.transform.position = gameObject.transform.position;
-        //            detonator.Explode ();
+        detonator.gameObject.transform.position = gameObject.transform.position;
+        detonator.Explode ();
 
         // Explode Effect by particle
-        Instantiate(particle, gameObject.transform.position, Quaternion.identity);
+        // Instantiate(particle, gameObject.transform.position, Quaternion.identity);
 
         Destroy (gameObject, 1.0f);
         gameManager.IncreaseHumanDead ();
