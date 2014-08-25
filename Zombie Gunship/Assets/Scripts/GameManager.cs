@@ -12,32 +12,39 @@ public class GameManager : MonoBehaviour {
     private int zombieKilled = 0;
     private int zombieInShelter = 0;
 
-    private bool refreshResult;
+    // Rotation for game Result
+    private GUIStyle myStyle;
+    private float rotateAngle;
+    private Vector2 pivotPoint;
 
 	// Use this for initialization
 	void Start () {
         summary.text = "";
-        refreshResult = false;
+        rotateAngle = 270;
+        pivotPoint = new Vector2 (70, Screen.height - 70);
+        myStyle = new GUIStyle ();
+        myStyle.normal.textColor = Color.black;
+        myStyle.fontSize = 30;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (refreshResult) {
-            RefreshText ();
-            refreshResult = false;
-        }
-    }
 
     void OnGUI() {
+
         if (zombieInShelter > 0 || humanDied >= 3) {
             DrawTexture(lose);
-            return;
+//            return;
         }
-
+        
         if (zombieKilled > 100) {
             DrawTexture(win);
-            return;
+//            return;
         }
+
+        GUIUtility.RotateAroundPivot (rotateAngle, pivotPoint);
+        GUI.Label(new Rect(50, Screen.height - 120, 120, 40), humanSaved +  " Human Saved", myStyle);
+        GUI.Label(new Rect(50, Screen.height - 90, 120, 40), humanDied +  " Human Died", myStyle);
+        GUI.Label(new Rect(50, Screen.height - 60, 120, 40), zombieKilled + " Zombie Killed", myStyle);
+        GUI.Label(new Rect(50, Screen.height - 30, 150, 40), zombieInShelter + " Zombie in Shelter", myStyle);
+
     }
 
     void RefreshText() {
@@ -46,22 +53,18 @@ public class GameManager : MonoBehaviour {
 
     public void IncreaseHumanSaved() {
         humanSaved++;
-        refreshResult = true;
     }
 
     public void IncreaseHumanDead () {
         humanDied++;
-        refreshResult = true;
     }
 
     public void IncreaseZombieInShelter() {
         zombieInShelter++;
-        refreshResult = true;
     }
 
     public void IncreasedZombieKilled() {
         zombieKilled++;
-        refreshResult = true;
     }
 
     public void DrawTexture(Texture2D texture) {
